@@ -125,16 +125,9 @@ function TeamMemberCard({ member, index, reduceMotion }) {
         delay: reduceMotion ? 0 : index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className={`flex flex-col items-center text-center ${isFeatured ? "lg:-mt-4" : ""}`}
+      className="flex flex-col items-center text-center"
     >
-      {isFeatured ? (
-        <span className="mb-3 rounded-full border border-orange-500/50 bg-orange-500/10 px-4 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-orange-500">
-          Leadership
-        </span>
-      ) : (
-        <span className="mb-3 h-6" aria-hidden />
-      )}
-      <div className={`w-full max-w-[20rem] ${isFeatured ? "lg:max-w-[22rem]" : ""}`}>
+      <div className={`w-full max-w-[20rem] ${isFeatured ? "lg:max-w-88" : ""}`}>
         <TeamPhoto
           name={member.name}
           image={member.image}
@@ -189,6 +182,9 @@ export function TeamSection() {
           >
             The team behind Digital Drifters
           </h2>
+          <p className="mt-4 inline-flex items-center justify-center rounded-full border border-orange-500/50 bg-orange-500/10 px-5 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-orange-500 sm:text-[11px]">
+            Leadership
+          </p>
         </motion.header>
 
         <div className="mt-14 grid grid-cols-1 items-end gap-10 sm:grid-cols-3 sm:gap-6 lg:gap-10">

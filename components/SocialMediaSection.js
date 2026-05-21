@@ -21,7 +21,7 @@ const PLATFORMS = [
   },
   {
     name: "LinkedIn",
-    role: "Institutional & professional outreach",
+    role: "B2B & professional outreach",
     Icon: IconLinkedIn,
   },
   {
@@ -50,32 +50,32 @@ const METRICS = [
   {
     value: "< 2h",
     label: "Response SLA",
-    detail: "Stakeholder & public inquiries",
+    detail: "Customer & stakeholder inquiries",
   },
 ];
 
-const GOVERNMENT_FOCUS = [
+const SERVICE_FOCUS = [
   {
-    title: "Policy & initiative communication",
-    text: "Clear, consistent messaging for programs, reforms, and public-service updates—aligned with official tone and timelines.",
+    title: "Brand & product storytelling",
+    text: "Clear, consistent messaging for launches, offers, and updates—aligned with your voice, audience, and campaign calendar.",
   },
   {
-    title: "Citizen engagement",
-    text: "Structured comment moderation, FAQ pathways, and feedback loops that keep channels respectful and actionable.",
+    title: "Community engagement",
+    text: "Structured comment moderation, FAQ pathways, and feedback loops that keep channels respectful and on-brand.",
   },
   {
-    title: "Awareness campaigns",
-    text: "Calendar-driven campaigns for health, digital literacy, employment, and national initiatives with measurable reach.",
+    title: "Campaigns & promotions",
+    text: "Calendar-driven campaigns for sales, events, hiring, and awareness goals—with creative that fits your niche.",
   },
   {
     title: "Reputation & crisis readiness",
-    text: "Escalation playbooks, holding statements, and rapid coordination when narratives need correction or clarification.",
+    text: "Escalation playbooks, holding statements, and fast coordination when messaging needs to be corrected or clarified.",
   },
 ];
 
 const PROCESS = [
   { step: "01", title: "Audit & strategy", text: "Channel review, audience mapping, KPIs, and governance rules." },
-  { step: "02", title: "Editorial calendar", text: "Planned posts, approvals, and bilingual-ready copy workflows." },
+  { step: "02", title: "Editorial calendar", text: "Planned posts, approvals, and on-brand copy workflows." },
   { step: "03", title: "Creative production", text: "On-brand graphics, short video, and accessible formats." },
   { step: "04", title: "Publish & engage", text: "Scheduled releases, live coverage, and monitored responses." },
   { step: "05", title: "Measure & report", text: "Dashboards and executive summaries for decision-makers." },
@@ -194,13 +194,12 @@ export function SocialMediaSection() {
             id="social-heading"
             className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]"
           >
-            Professional channels for public impact
+            Social presence that builds trust
           </h2>
           <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">
-            Digital Drifters manages social presence with the discipline institutions
-            expect—clear governance, measurable reporting, and respectful engagement
-            suited to government, enterprise, and national initiatives in Pakistan and
-            beyond.
+            Digital Drifters manages social channels with clear governance, measurable
+            reporting, and on-brand engagement—for startups, retailers, SaaS, agencies,
+            and established companies in any niche that needs professional reach.
           </p>
         </motion.header>
 
@@ -218,12 +217,12 @@ export function SocialMediaSection() {
           transition={{ duration: 0.5 }}
         >
           <p className="text-center text-sm font-bold uppercase tracking-[0.2em] text-orange-500 sm:text-base">
-            Government &amp; institutional readiness
+            Built for any company &amp; niche
           </p>
           <p className="mx-auto mt-3 max-w-3xl text-center text-sm leading-relaxed text-white/85 sm:text-base">
-            We support ministries and public-sector teams to enhance digital outreach—
-            policy communication, citizen services awareness, and coordinated messaging
-            with approval workflows leadership can trust.
+            Whether you sell products, deliver services, or run operations at scale—we
+            plan content, coordinate approvals, and keep every channel aligned with
+            leadership-ready reporting your team can act on.
           </p>
         </motion.div>
 
@@ -254,10 +253,10 @@ export function SocialMediaSection() {
             transition={{ duration: 0.5 }}
           >
             <h3 className="text-xl font-bold text-white sm:text-2xl">
-              Public-sector focus areas
+              What we manage for you
             </h3>
             <ul className="mt-6 flex flex-col gap-5">
-              {GOVERNMENT_FOCUS.map((item) => (
+              {SERVICE_FOCUS.map((item) => (
                 <li
                   key={item.title}
                   className="rounded-xl border border-orange-500/20 bg-black p-5 transition hover:border-orange-500/40"
@@ -380,8 +379,7 @@ export function SocialMediaSection() {
           transition={{ duration: 0.45 }}
         >
           <p className="max-w-2xl text-base text-white/80 sm:text-lg">
-            Ready to strengthen your institution&apos;s digital presence with accountable,
-            data-led social media management?
+            Ready to grow your brand with accountable, data-led social media management?
           </p>
           <Link
             href="#contact"
