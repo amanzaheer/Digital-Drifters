@@ -3,7 +3,11 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { ServicesSection } from "@/components/ServicesSection";
+import { ProjectsSection } from "@/components/ProjectsSection";
+import { SocialMediaSection } from "@/components/SocialMediaSection";
 import { AboutSection } from "@/components/AboutSection";
+import { TeamSection } from "@/components/TeamSection";
+import { ReviewsSection } from "@/components/ReviewsSection";
 import { CtaSection } from "@/components/CtaSection";
 import { FixedSocialFooter } from "@/components/FixedSocialFooter";
 
@@ -13,7 +17,11 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ServicesSection />
+      <ProjectsSection />
+      <SocialMediaSection />
       <AboutSection />
+      <TeamSection />
+      <ReviewsSection />
       <CtaSection />
       <FixedSocialFooter />
     </main>

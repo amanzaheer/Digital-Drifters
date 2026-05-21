@@ -73,3 +73,54 @@ body::-webkit-scrollbar {
   }
 }
 
+@keyframes reviews-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.reviews-marquee {
+  --reviews-gap: 1.25rem;
+  --reviews-card-w: min(calc(100vw - 2.5rem), 22rem);
+}
+
+@media (min-width: 640px) {
+  .reviews-marquee {
+    --reviews-card-w: calc((100vw - 3.5rem - var(--reviews-gap)) / 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .reviews-marquee {
+    --reviews-card-w: calc((min(100vw, 1600px) - 5rem - 3 * var(--reviews-gap)) / 4);
+  }
+}
+
+.reviews-marquee-track {
+  display: flex;
+  gap: var(--reviews-gap);
+  width: max-content;
+  animation: reviews-marquee 58s linear infinite;
+  will-change: transform;
+}
+
+.reviews-marquee:hover .reviews-marquee-track,
+.reviews-marquee:focus-within .reviews-marquee-track {
+  animation-play-state: paused;
+}
+
+.reviews-card {
+  flex: 0 0 var(--reviews-card-w);
+  width: var(--reviews-card-w);
+  min-height: 17.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews-marquee-track {
+    animation-duration: 120s;
+  }
+}
+
