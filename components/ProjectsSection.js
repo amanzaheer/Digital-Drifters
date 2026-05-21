@@ -9,6 +9,7 @@ const PROJECTS = [
   {
     name: "AgentDial.ai",
     href: "https://agentdial.ai",
+    aiPowered: true,
     image:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&h=560&fit=crop&q=80",
     tags: ["AI call bot", "Operations"],
@@ -18,6 +19,7 @@ const PROJECTS = [
   {
     name: "EatsDesk.com",
     href: "https://eatsdesk.com",
+    aiPowered: true,
     image:
       "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&h=560&fit=crop&q=80",
     tags: ["Restaurant POS", "AI calls"],
@@ -157,7 +159,11 @@ function ProjectCard({ project, index, reduceMotion }) {
       whileHover={hoverMotion}
       viewport={{ once: true, margin: "-50px", amount: 0.15 }}
       transition={transition}
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-orange-500/25 bg-black shadow-[0_0_36px_-14px_rgba(249,115,22,0.2)] transition-[border-color,box-shadow] duration-300 hover:border-orange-500/50 hover:shadow-[0_0_48px_-8px_rgba(249,115,22,0.35)]"
+      className={`group flex h-full flex-col overflow-hidden rounded-2xl border bg-black shadow-[0_0_36px_-14px_rgba(249,115,22,0.2)] transition-[border-color,box-shadow] duration-300 hover:shadow-[0_0_48px_-8px_rgba(249,115,22,0.35)] ${
+        project.aiPowered
+          ? "border-orange-500/55 hover:border-orange-500"
+          : "border-orange-500/25 hover:border-orange-500/50"
+      }`}
     >
       <Link
         href={project.href}
@@ -165,6 +171,11 @@ function ProjectCard({ project, index, reduceMotion }) {
         rel="noopener noreferrer"
         className="relative block aspect-[16/10] overflow-hidden"
       >
+        {project.aiPowered ? (
+          <span className="absolute left-3 top-3 z-10 rounded-full bg-orange-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-black shadow-lg">
+            AI-powered
+          </span>
+        ) : null}
         <ProjectCardImage
           name={project.name}
           image={project.image}
@@ -246,10 +257,16 @@ export function ProjectsSection() {
             Platforms we&apos;ve built &amp; shipped
           </h2>
           <p className="mt-5 text-base leading-relaxed text-white/75 sm:text-lg">
-            End-to-end software from Digital Drifters—AI voice, restaurant ops,
+            End-to-end software from Digital Drifters—voice AI, restaurant ops,
             domain infrastructure, call-center CRM, fintech, and sales systems
             running in production today.
           </p>
+          <Link
+            href="#ai"
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-orange-500/50 bg-orange-500/10 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-orange-500 transition hover:bg-orange-500 hover:text-black sm:text-sm"
+          >
+            Explore our AI integration →
+          </Link>
         </motion.header>
 
         <div className="mt-14 grid grid-cols-1 gap-7 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
