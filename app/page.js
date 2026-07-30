@@ -22,7 +22,7 @@ export default function Home() {
       <AiIntegrationSection />
       <SocialMediaSection />
       <AboutSection />
-      <TeamSection />
+      {/* <TeamSection /> */}
       <ReviewsSection />
       <CtaSection />
       <FixedSocialFooter />
