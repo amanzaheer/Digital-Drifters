@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 
+const NAVY = "text-black";
+const NAVY_BG = "bg-[#0B1D3A]";
+
 const AI_CAPABILITIES = [
   {
     id: "chat",
@@ -108,26 +111,26 @@ function CapabilityCard({ item, index, reduceMotion }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5, delay: reduceMotion ? 0 : index * 0.08 }}
-      className={`relative flex flex-col rounded-2xl border bg-black p-6 sm:p-7 ${
+      className={`relative flex flex-col rounded-2xl border bg-white p-6 shadow-sm sm:p-7 ${
         isCenter
-          ? "border-orange-500 shadow-[0_0_48px_-8px_rgba(249,115,22,0.5)] lg:-mt-2 lg:scale-[1.02]"
+          ? "border-orange-500 shadow-[0_0_36px_-10px_rgba(249,115,22,0.35)] lg:-mt-2 lg:scale-[1.02]"
           : "border-orange-500/30"
       }`}
     >
       {isCenter ? (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-orange-500 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-black">
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-red-600 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
           Flagship
         </span>
       ) : null}
-      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500 text-black">
+      <span className={`flex h-12 w-12 items-center justify-center rounded-xl ${NAVY_BG} text-white`}>
         <item.Icon className="h-6 w-6" />
       </span>
-      <h3 className="mt-5 text-lg font-bold text-white sm:text-xl">{item.title}</h3>
-      <p className="mt-3 text-sm leading-relaxed text-white/80 sm:text-base">{item.description}</p>
+      <h3 className={`mt-5 text-lg font-bold ${NAVY} sm:text-xl`}>{item.title}</h3>
+      <p className="mt-3 text-sm leading-relaxed text-black sm:text-base">{item.description}</p>
       <ul className="mt-5 flex flex-col gap-2.5">
         {item.points.map((point) => (
-          <li key={point} className="flex gap-2 text-sm text-white/75">
-            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-orange-500" aria-hidden />
+          <li key={point} className="flex gap-2 text-sm text-black">
+            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-600" aria-hidden />
             {point}
           </li>
         ))}
@@ -142,11 +145,11 @@ export function AiIntegrationSection() {
   return (
     <section
       id="ai"
-      className="relative scroll-mt-24 overflow-hidden bg-black py-20 text-white sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 overflow-hidden bg-white py-20 text-black sm:py-24 lg:py-28"
       aria-labelledby="ai-heading"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_50%,rgba(249,115,22,0.16),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_50%,rgba(249,115,22,0.08),transparent_60%)]"
         aria-hidden
       />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-orange-500/50 to-transparent" aria-hidden />
@@ -159,17 +162,17 @@ export function AiIntegrationSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.55 }}
         >
-          <p className="inline-flex items-center gap-2 rounded-full border border-orange-500/50 bg-orange-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-orange-500 sm:text-sm">
+          <p className="inline-flex items-center gap-2 rounded-full border border-orange-500/50 bg-orange-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-orange-600 sm:text-sm">
             <IconSpark className="h-4 w-4" />
             AI integration — highlighted
           </p>
           <h2
             id="ai-heading"
-            className="mt-5 text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-[2.85rem]"
+            className={`mt-5 text-3xl font-bold leading-[1.1] tracking-tight ${NAVY} sm:text-4xl lg:text-[2.85rem]`}
           >
             Intelligence built into everything we deliver
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">
+          <p className="mt-5 text-base leading-relaxed text-black sm:text-lg">
             Digital Drifters does not bolt AI on at the end—we design chatbots, call
             bots, and knowledge-driven assistants into the software, social, and
             operations work we already run for clients. Your audience gets fast,
@@ -178,16 +181,16 @@ export function AiIntegrationSection() {
         </motion.header>
 
         <motion.div
-          className="mx-auto mt-10 max-w-3xl rounded-2xl border-2 border-orange-500/60 bg-linear-to-br from-orange-500/10 via-black to-black px-6 py-5 text-center shadow-[0_0_56px_-12px_rgba(249,115,22,0.45)] sm:px-8"
+          className="mx-auto mt-10 max-w-3xl rounded-2xl border-2 border-orange-500/60 bg-linear-to-br from-orange-500/10 via-white to-white px-6 py-5 text-center shadow-[0_0_36px_-14px_rgba(249,115,22,0.3)] sm:px-8"
           initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
         >
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-500 sm:text-base">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#083157]sm:text-base">
             What we provide through AI
           </p>
-          <p className="mt-3 text-sm leading-relaxed text-white/85 sm:text-base">
+          <p className="mt-3 text-sm leading-relaxed text-black sm:text-base">
             Auto-replies on digital channels, automated call handling on the phone,
             and reliable answers pulled from your company&apos;s own information—one
             partner for integration, training, monitoring, and improvement.
@@ -206,13 +209,13 @@ export function AiIntegrationSection() {
         </div>
 
         <motion.div
-          className="mt-14 rounded-2xl border border-orange-500/30 bg-black p-6 sm:p-8"
+          className="mt-14 rounded-2xl border border-orange-500/30 bg-white p-6 shadow-sm sm:p-8"
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h3 className="text-center text-lg font-bold text-white sm:text-xl">
+          <h3 className={`text-center text-lg font-bold ${NAVY} sm:text-xl`}>
             Live in our product stack
           </h3>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -222,22 +225,22 @@ export function AiIntegrationSection() {
                 href={product.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col rounded-xl border border-orange-500/25 bg-orange-500/5 px-5 py-4 transition hover:border-orange-500 hover:bg-orange-500/10"
+                className="group flex flex-col rounded-xl border border-orange-500/25 bg-orange-50/40 px-5 py-4 transition hover:border-orange-500 hover:bg-orange-50"
               >
-                <span className="text-lg font-bold text-white group-hover:text-orange-500">
+                <span className={`text-lg font-bold ${NAVY} group-hover:text-red-600`}>
                   {product.name}
                 </span>
-                <span className="mt-1 text-sm text-white/70">{product.blurb}</span>
-                <span className="mt-3 text-xs font-bold uppercase tracking-wider text-orange-500">
+                <span className="mt-1 text-sm text-slate-600">{product.blurb}</span>
+                <span className="mt-3 inline-flex w-fit items-center rounded-full bg-red-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white transition group-hover:bg-orange-600">
                   View project →
                 </span>
               </Link>
             ))}
           </div>
-          <p className="mt-6 text-center text-sm text-white/60">
+          <p className="mt-6 text-center text-sm text-slate-500">
             We also embed the same AI patterns into custom builds, CRM flows, and
             social inbox automation—see{" "}
-            <Link href="#work" className="font-semibold text-orange-500 hover:text-white">
+            <Link href="#work" className="font-semibold text-[#083157] hover:text-[#0B1D3A]">
               all projects
             </Link>
             .
@@ -251,22 +254,22 @@ export function AiIntegrationSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
         >
-          <p className="text-center text-xs font-bold uppercase tracking-[0.22em] text-orange-500 sm:text-sm">
+          <p className="text-center text-xs font-bold uppercase tracking-[0.22em] text-[#083157] sm:text-sm">
             How it works end-to-end
           </p>
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
             {INTEGRATION_STEPS.map((step, i) => (
               <div
                 key={step.label}
-                className="relative rounded-xl border border-orange-500/20 bg-black px-3 py-4 text-center sm:px-4"
+                className="relative rounded-xl border border-[#DE0015] bg-white px-3 py-4 text-center shadow-sm sm:px-4"
               >
-                <span className="text-[10px] font-black text-orange-500/80 sm:text-xs">
+                <span className="text-[10px] font-black text-black sm:text-xs">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="mt-2 text-xs font-bold leading-snug text-white sm:text-sm">
+                <p className={`mt-2 text-xs font-bold leading-snug ${NAVY} sm:text-sm`}>
                   {step.label}
                 </p>
-                <p className="mt-1 text-[10px] leading-relaxed text-white/65 sm:text-xs">
+                <p className="mt-1 text-[10px] leading-relaxed text-black sm:text-xs">
                   {step.detail}
                 </p>
               </div>
@@ -284,7 +287,7 @@ export function AiIntegrationSection() {
           ].map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-orange-500/35 bg-orange-500/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-orange-500 sm:text-[11px]"
+              className="rounded-full bg-[#DE0015] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white sm:text-[11px]"
             >
               {tag}
             </span>

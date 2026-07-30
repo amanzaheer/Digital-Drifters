@@ -105,7 +105,7 @@ function IconQuote({ className }) {
 
 function StarRating() {
   return (
-    <div className="flex gap-0.5 text-orange-500" aria-label="5 out of 5 stars">
+    <div className="flex gap-0.5 text-red-600" aria-label="5 out of 5 stars">
       {Array.from({ length: 5 }).map((_, i) => (
         <svg key={i} className="h-3.5 w-3.5 sm:h-4 sm:w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -124,9 +124,9 @@ function ReviewCard({ review }) {
         : "border-orange-500/35 text-orange-500";
 
   return (
-    <article className="reviews-card flex shrink-0 flex-col rounded-2xl border border-orange-500/25 bg-black p-5 shadow-[0_0_36px_-14px_rgba(249,115,22,0.22)] sm:p-6">
+    <article className="reviews-card flex shrink-0 flex-col rounded-2xl border border-orange-500/25 bg-white p-5 shadow-[0_4px_28px_-10px_rgba(15,23,42,0.15)] sm:p-6">
       <div className="flex items-start justify-between gap-3">
-        <IconQuote className="h-7 w-7 shrink-0 text-orange-500/40 sm:h-8 sm:w-8" />
+        <IconQuote className="h-7 w-7 shrink-0 text-red-500/40 sm:h-8 sm:w-8" />
         <span
           className={`rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${categoryClass}`}
         >
@@ -134,13 +134,13 @@ function ReviewCard({ review }) {
         </span>
       </div>
       <StarRating />
-      <p className="mt-3 flex-1 text-sm leading-relaxed text-white/85 line-clamp-5 sm:mt-4 sm:text-[15px]">
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-700 line-clamp-5 sm:mt-4 sm:text-[15px]">
         &ldquo;{review.quote}&rdquo;
       </p>
-      <div className="mt-5 border-t border-white/10 pt-4">
-        <p className="font-bold text-white">{review.name}</p>
-        <p className="mt-0.5 text-xs text-white/70 sm:text-sm">{review.role}</p>
-        <p className="mt-0.5 text-xs font-medium text-orange-500/90">{review.org}</p>
+      <div className="mt-5 border-t border-slate-200 pt-4">
+        <p className="font-bold text-[#0B1F4E]">{review.name}</p>
+        <p className="mt-0.5 text-xs text-slate-500 sm:text-sm">{review.role}</p>
+        <p className="mt-0.5 text-xs font-medium text-red-500/90">{review.org}</p>
       </div>
     </article>
   );
@@ -153,11 +153,11 @@ export function ReviewsSection() {
   return (
     <section
       id="reviews"
-      className="relative scroll-mt-24 overflow-hidden bg-black py-20 text-white sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 overflow-hidden bg-white py-20 text-slate-900 sm:py-24 lg:py-28"
       aria-labelledby="reviews-heading"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_45%_at_50%_100%,rgba(249,115,22,0.1),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_45%_at_50%_100%,rgba(249,115,22,0.07),transparent_55%)]"
         aria-hidden
       />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-orange-500/35 to-transparent" aria-hidden />
@@ -170,16 +170,16 @@ export function ReviewsSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-orange-500 sm:text-sm sm:tracking-[0.26em]">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-red-600 sm:text-sm sm:tracking-[0.26em]">
             Client testimonials
           </p>
           <h2
             id="reviews-heading"
-            className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.65rem]"
+            className="mt-4 text-3xl font-bold tracking-tight text-[#0B1F4E] sm:text-4xl lg:text-[2.65rem]"
           >
             Trusted for software, social &amp; operations
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-white/75 sm:text-lg">
+          <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
             Partners describe how we deliver platforms, managed channels, and
             operational clarity—professional delivery from kickoff to reporting.
           </p>
@@ -200,7 +200,7 @@ export function ReviewsSection() {
         </div>
       </div>
 
-      <p className="relative mx-auto mt-8 max-w-2xl px-5 text-center text-[11px] leading-relaxed text-white/45 sm:text-xs">
+      <p className="relative mx-auto mt-8 max-w-2xl px-5 text-center text-[11px] leading-relaxed text-slate-400 sm:text-xs">
         Illustrative client feedback for portfolio presentation.
       </p>
     </section>

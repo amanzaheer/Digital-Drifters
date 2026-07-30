@@ -10,6 +10,9 @@ const WHATSAPP_HREF = "https://wa.me/447466908663";
 const EMAIL = "digitaldrifters12@gmail.com";
 const MAILTO = `mailto:${EMAIL}`;
 
+const NAVY = "text-[#0B1D3A]";
+const RED = "#E10E1D";
+
 const BG_SRC =
   "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80";
 const FIGURE_SRC =
@@ -72,7 +75,7 @@ export function CtaSection() {
 
   return (
     <section
-      className="relative isolate overflow-hidden bg-black py-16 text-white sm:py-20 lg:py-0"
+      className="relative isolate overflow-hidden bg-white py-16 text-slate-900 sm:py-20 lg:py-0"
       aria-labelledby="cta-heading"
     >
       <div className="pointer-events-none absolute inset-0">
@@ -80,13 +83,13 @@ export function CtaSection() {
           src={BG_SRC}
           alt=""
           fill
-          className="object-cover object-center opacity-40 grayscale"
+          className="object-cover object-center opacity-10 grayscale"
           sizes="100vw"
           priority={false}
         />
-        <div className="absolute inset-0 bg-black/10" aria-hidden />
+        <div className="absolute inset-0 bg-white/60" aria-hidden />
         <div
-          className="absolute inset-0 bg-linear-to-r from-black via-black/20 to-black/40"
+          className="absolute inset-0 bg-linear-to-r from-white via-white/60 to-white/70"
           aria-hidden
         />
       </div>
@@ -124,13 +127,13 @@ export function CtaSection() {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            <p className="inline-flex items-center gap-2 rounded-full border border-orange-500/40 bg-orange-500/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.28em] text-orange-500 sm:text-[11px]">
-              <IconSpark className="h-3.5 w-3.5 text-orange-500" />
+            <p className="inline-flex items-center gap-2 rounded-full border border-orange-500/40 bg-orange-500/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.28em] text-orange-600 sm:text-[11px]">
+              <IconSpark className="h-3.5 w-3.5 text-red-600" />
               Join us now
             </p>
             <h2
               id="cta-heading"
-              className="mt-5 text-3xl font-black leading-[1.08] tracking-tight text-white sm:text-4xl lg:text-[2.35rem] xl:text-4xl"
+              className={`mt-5 text-3xl font-black leading-[1.08] tracking-tight ${NAVY} sm:text-4xl lg:text-[2.35rem] xl:text-4xl`}
             >
               Have a project?
               <br />
@@ -141,13 +144,14 @@ export function CtaSection() {
                 href={WHATSAPP_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-xl bg-linear-to-r from-orange-600 to-orange-500 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_0_32px_-4px_rgba(249,115,22,0.55)] transition hover:brightness-110 sm:min-w-[11rem]"
+                style={{ backgroundColor: RED }}
+                className="inline-flex items-center justify-center rounded-xl px-8 py-3.5 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_10px_28px_-8px_rgba(225,14,29,0.55)] transition hover:brightness-110 sm:min-w-[11rem]"
               >
                 Hire now
               </a>
               <Link
                 href="#about"
-                className="inline-flex items-center justify-center rounded-xl border-2 border-white/90 bg-transparent px-8 py-3.5 text-xs font-bold uppercase tracking-[0.2em] text-white transition hover:bg-white/10 sm:min-w-[11rem]"
+                className={`inline-flex items-center justify-center rounded-xl border-2 border-[#0B1D3A]/80 bg-transparent px-8 py-3.5 text-xs font-bold uppercase tracking-[0.2em] ${NAVY} transition hover:bg-[#0B1D3A]/5 sm:min-w-[11rem]`}
               >
                 Learn more
               </Link>
@@ -166,19 +170,22 @@ export function CtaSection() {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            <div className="rounded-2xl border border-dashed border-orange-500/70 bg-black/40 px-5 py-4 backdrop-blur-sm sm:px-6 sm:py-5">
+            <div className="rounded-2xl border border-dashed border-red-500/60 bg-white px-5 py-4 shadow-sm backdrop-blur-sm sm:px-6 sm:py-5">
               <div className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-orange-500 text-black">
-                  <IconPhone className="h-5 w-5 text-black" />
+                <span
+                  style={{ backgroundColor: RED }}
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white"
+                >
+                  <IconPhone className="h-5 w-5 text-white" />
                 </span>
                 <div className="min-w-0 flex-1 text-left">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/80 sm:text-[11px]">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 sm:text-[11px]">
                     Call us anytime
                   </p>
                   <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2">
                     <a
                       href={`tel:${PHONE_TEL}`}
-                      className="text-lg font-bold tracking-tight text-white transition hover:text-orange-500 sm:text-xl"
+                      className={`text-lg font-bold tracking-tight ${NAVY} transition hover:text-red-600 sm:text-xl`}
                     >
                       {PHONE_DISPLAY}
                     </a>
@@ -186,7 +193,7 @@ export function CtaSection() {
                       href={WHATSAPP_HREF}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-orange-500 transition hover:bg-orange-500/15"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-red-500/50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-red-600 transition hover:bg-red-50"
                       aria-label="WhatsApp"
                     >
                       <IconWhatsApp className="h-3.5 w-3.5" />
@@ -197,18 +204,21 @@ export function CtaSection() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-dashed border-orange-500/70 bg-black/40 px-5 py-4 backdrop-blur-sm sm:px-6 sm:py-5">
+            <div className="rounded-2xl border border-dashed border-red-500/60 bg-white px-5 py-4 shadow-sm backdrop-blur-sm sm:px-6 sm:py-5">
               <div className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-orange-500 text-black">
-                  <IconMail className="h-5 w-5 text-black" />
+                <span
+                  style={{ backgroundColor: RED }}
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white"
+                >
+                  <IconMail className="h-5 w-5 text-white" />
                 </span>
                 <div className="min-w-0 flex-1 text-left">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/80 sm:text-[11px]">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-black sm:text-[11px]">
                     Mail us now
                   </p>
                   <a
                     href={MAILTO}
-                    className="mt-2 block break-all text-base font-bold tracking-tight text-white transition hover:text-orange-500 sm:text-lg"
+                    className={`mt-2 block break-all text-base font-bold tracking-tight ${NAVY} transition hover:text-red-600 sm:text-lg`}
                   >
                     {EMAIL}
                   </a>

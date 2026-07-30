@@ -5,66 +5,69 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 
+const NAVY = "text-[#0B1D3A]";
+const RED = "#E10E1D";
+
 const PROJECTS = [
   {
     name: "AgentDial.ai",
     href: "https://agentdial.ai",
     aiPowered: true,
     image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&h=560&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1553775282-20af80779df7?auto=format&fit=crop&w=1600&q=80",
     tags: ["AI call bot", "Operations"],
     description:
-      "AI voice agent for handling day-to-day operations through an intelligent call bot—routing, responses, and workflows without losing the human touch when it matters.",
+      "AI-powered voice automation platform developed by Digital Drifters to streamline customer communication, automate calls, and improve business operations..",
   },
   {
     name: "EatsDesk.com",
     href: "https://eatsdesk.com",
     aiPowered: true,
     image:
-      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&h=560&fit=crop&q=80",
-    tags: ["Restaurant POS", "AI calls"],
+      "https://images.unsplash.com/photo-1742240216264-f0aac25ef4ba?auto=format&fit=crop&w=1600&q=80",
+    tags: ["Food Tech", "Business Platform", "Web Application"],
     description:
-      "Restaurant point-of-sale paired with an AI call bot so orders, reservations, and guest questions are handled on the line while the floor stays focused on service.",
+      "A smart food technology platform designed to simplify business operations, enhance customer experiences, and provide scalable digital solutions with modern web technologies.",
   },
   {
     name: "DomainsPrimeTime.com",
     href: "https://domainsprimetime.com",
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&h=560&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?auto=format&fit=crop&w=1600&q=80",
     imageFallback:
-      "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=900&h=560&fit=crop&q=80",
-    tags: ["Domains", "Site builder"],
+      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?auto=format&fit=crop&w=1600&q=80",
+    tags: ["Domain Marketplace", "Web Services", "Digital Solutions"],
     description:
-      "Full-featured domain management: buy domains, connect them to sites, and spin up thousands of sites in seconds from one control plane built for scale.",
+      "A professional domain marketplace platform designed to help users explore, manage, and acquire premium domain names with a smooth browsing experience and modern web features."
   },
   {
     name: "Verified CRM",
     href: "https://dev.verifiedcrm.com",
     image:
-      "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=900&h=560&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
     imageFallback:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=560&fit=crop&q=80",
-    tags: ["Call center", "Gold broker"],
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
+    tags: ["CRM", "Business Automation", "SaaS Platform"],
     description:
-      "Call-center and gold-broker operations in one management system—queues, agents, compliance-friendly workflows, and leadership dashboards for live floor control.",
+      "A powerful CRM platform designed to help businesses manage customer relationships, streamline workflows, track performance, and improve operations through a centralized dashboard."
   },
   {
     name: "CashlyCards.com",
     href: "https://cashlycards.com",
     image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&h=560&fit=crop&q=80",
-    tags: ["Fintech", "Payments"],
+      "https://images.unsplash.com/photo-1685483749753-0dab7e144794?auto=format&fit=crop&w=1600&q=80",
+    tags: ["eCommerce", "Online Marketplace", "Shopping Platform"],
     description:
-      "Fintech platform for payment processing and card management—secure flows, card lifecycle tools, and reporting built for teams that move money at volume.",
+      "A modern eCommerce platform designed to provide seamless online shopping experiences with efficient product management, secure transactions, and smooth order processing capabilities."
   },
   {
     name: "LogicalCRM.com",
     href: "https://logicalcrm.com",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&h=560&fit=crop&q=80",
-    tags: ["CRM", "Sales"],
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80",
+    tags: ["CRM", "Business Management", "SaaS Platform"],
     description:
-      "Complete CRM built collaboratively with our team—business management, customer relationships, pipeline and sales tooling in one logical workspace.",
+      "A smart CRM platform designed to help businesses manage customer relationships, automate workflows, track sales activities, and improve productivity through a centralized system."
   },
 ];
 
@@ -106,10 +109,10 @@ function ProjectCardImage({ name, image, imageFallback }) {
     const initial = name.replace(/[^a-zA-Z0-9]/g, "").slice(0, 2).toUpperCase() || "DD";
     return (
       <div
-        className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-orange-500/25 via-black to-black"
+        className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-red-500/15 via-white to-white"
         aria-hidden
       >
-        <span className="text-5xl font-black tracking-tighter text-orange-500/90 sm:text-6xl">
+        <span className="text-5xl font-black tracking-tighter text-[#0B1D3A]/80 sm:text-6xl">
           {initial}
         </span>
       </div>
@@ -159,10 +162,10 @@ function ProjectCard({ project, index, reduceMotion }) {
       whileHover={hoverMotion}
       viewport={{ once: true, margin: "-50px", amount: 0.15 }}
       transition={transition}
-      className={`group flex h-full flex-col overflow-hidden rounded-2xl border bg-black shadow-[0_0_36px_-14px_rgba(249,115,22,0.2)] transition-[border-color,box-shadow] duration-300 hover:shadow-[0_0_48px_-8px_rgba(249,115,22,0.35)] ${
+      className={`group flex h-full flex-col overflow-hidden rounded-2xl border bg-white shadow-[0_10px_30px_-14px_rgba(15,23,42,0.18)] transition-[border-color,box-shadow] duration-300 hover:shadow-[0_16px_40px_-12px_rgba(225,14,29,0.25)] ${
         project.aiPowered
-          ? "border-orange-500/55 hover:border-orange-500"
-          : "border-orange-500/25 hover:border-orange-500/50"
+          ? "border-red-500/45 hover:border-red-500"
+          : "border-slate-200 hover:border-red-500/40"
       }`}
     >
       <Link
@@ -172,7 +175,10 @@ function ProjectCard({ project, index, reduceMotion }) {
         className="relative block aspect-[16/10] overflow-hidden"
       >
         {project.aiPowered ? (
-          <span className="absolute left-3 top-3 z-10 rounded-full bg-orange-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-black shadow-lg">
+          <span
+            style={{ backgroundColor: RED }}
+            className="absolute left-3 top-3 z-10 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg"
+          >
             AI-powered
           </span>
         ) : null}
@@ -182,14 +188,14 @@ function ProjectCard({ project, index, reduceMotion }) {
           imageFallback={project.imageFallback}
         />
         <div
-          className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent"
+          className="absolute inset-0 bg-linear-to-t from-black/70 via-black/25 to-transparent"
           aria-hidden
         />
         <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-orange-500/40 bg-black/70 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-orange-500 backdrop-blur-sm"
+              className="rounded-full border border-white/40 bg-black/60 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm"
             >
               {tag}
             </span>
@@ -199,21 +205,25 @@ function ProjectCard({ project, index, reduceMotion }) {
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex items-start justify-between gap-3">
-          <h3 className="text-lg font-bold tracking-tight text-white transition-colors group-hover:text-orange-500 sm:text-xl">
+          <h3 className={`text-lg font-bold tracking-tight ${NAVY} transition-colors group-hover:text-red-600 sm:text-xl`}>
             {project.name}
           </h3>
-          <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-orange-500/40 text-orange-500 transition group-hover:bg-orange-500 group-hover:text-black">
+          <span
+            style={{ borderColor: `${RED}66` }}
+            className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-red-600 transition group-hover:bg-[#E10E1D] group-hover:text-white group-hover:border-[#E10E1D]"
+          >
             <IconExternal className="h-3.5 w-3.5" />
           </span>
         </div>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-white/75 sm:text-base">
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-700 sm:text-base">
           {project.description}
         </p>
         <Link
           href={project.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-orange-500 transition hover:text-white"
+          className="mt-5 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-sm transition hover:brightness-110"
+          style={{ backgroundColor: RED }}
         >
           View project
           <IconExternal className="h-3.5 w-3.5" />
@@ -229,14 +239,14 @@ export function ProjectsSection() {
   return (
     <section
       id="work"
-      className="relative scroll-mt-24 bg-black py-20 text-white sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 bg-white py-20 text-black sm:py-24 lg:py-28"
       aria-labelledby="projects-heading"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_45%_at_50%_0%,rgba(249,115,22,0.14),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_45%_at_50%_0%,rgba(225,14,29,0.06),transparent_55%)]"
         aria-hidden
       />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-orange-500/35 to-transparent" aria-hidden />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-red-500/30 to-transparent" aria-hidden />
 
       <div className="relative mx-auto w-full max-w-[min(100%,1600px)] px-5 sm:px-8 lg:px-10 xl:px-14">
         <motion.header
@@ -246,24 +256,25 @@ export function ProjectsSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-orange-500 sm:text-sm sm:tracking-[0.26em]">
+          <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-red-600 sm:text-sm sm:tracking-[0.26em]">
             <IconBriefcase className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
             Our software projects
           </p>
           <h2
             id="projects-heading"
-            className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]"
+            className={`mt-4 text-3xl font-bold leading-[1.1] tracking-tight ${NAVY} sm:text-4xl lg:text-[2.75rem]`}
           >
             Platforms we&apos;ve built &amp; shipped
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-white/75 sm:text-lg">
+          <p className="mt-5 text-base leading-relaxed text-black sm:text-lg">
             End-to-end software from Digital Drifters—voice AI, restaurant ops,
             domain infrastructure, call-center CRM, fintech, and sales systems
             running in production today.
           </p>
           <Link
             href="#ai"
-            className="mt-6 inline-flex items-center gap-2 rounded-full border border-orange-500/50 bg-orange-500/10 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-orange-500 transition hover:bg-orange-500 hover:text-black sm:text-sm"
+            style={{ backgroundColor: RED }}
+            className="mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-[0_10px_28px_-10px_rgba(225,14,29,0.55)] transition hover:brightness-110 sm:text-sm"
           >
             Explore our AI integration →
           </Link>

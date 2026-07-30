@@ -28,7 +28,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  background-color: #000;
+  background-color: #000000;
   scrollbar-width: none;
 }
 
@@ -47,30 +47,6 @@ body {
 body::-webkit-scrollbar {
   width: 0;
   height: 0;
-}
-
-@keyframes star-twinkle {
-  0%,
-  100% {
-    opacity: 0.25;
-    transform: scale(0.85);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.hero-star {
-  animation: star-twinkle var(--twinkle-dur, 2.4s) ease-in-out infinite;
-  animation-delay: var(--twinkle-delay, 0s);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-star {
-    animation: none;
-    opacity: 0.65;
-  }
 }
 
 @keyframes reviews-marquee {

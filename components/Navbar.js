@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -15,22 +16,63 @@ const navItems = [
   { href: "#contact", label: "Contact" },
 ];
 
-/** Accent CTA on dark bar — teal → cyan → indigo */
+/** Solid red CTA to match brand button style */
 const ctaGradient =
-  "rounded-full bg-orange-600 text-sm font-semibold text-white shadow-[0_8px_28px_-6px_rgba(13,148,136,0.45)] transition hover:shadow-[0_12px_32px_-4px_rgba(79,70,229,0.4)] hover:brightness-[1.06]";
+  "rounded-full bg-red-600 text-sm font-semibold text-white shadow-[0_8px_24px_-6px_rgba(220,38,38,0.5)] transition hover:bg-red-700 hover:shadow-[0_12px_28px_-4px_rgba(220,38,38,0.55)]";
 
 function NavUnderlineLink({ href, label, onNavigate }) {
   return (
     <Link
       href={href}
       onClick={onNavigate}
-      className="group relative px-2.5 py-2 text-sm font-medium text-zinc-400 transition-colors hover:text-white sm:px-3 sm:text-[15px]"
+      className="group relative px-2.5 py-2 text-sm font-medium text-[#0B1F4E]/80 transition-colors hover:text-[#0B1F4E] sm:px-3 sm:text-[15px]"
     >
       <span className="relative z-10">{label}</span>
       <span
-        className="pointer-events-none absolute inset-x-0 bottom-1 h-px origin-left scale-x-0 bg-linear-to-r from-teal-400 via-cyan-400 to-indigo-400 transition-transform duration-300 ease-out group-hover:scale-x-100"
+        className="pointer-events-none absolute inset-x-0 bottom-1 h-px origin-left scale-x-0 bg-red-600 transition-transform duration-300 ease-out group-hover:scale-x-100"
         aria-hidden
       />
+    </Link>
+  );
+}
+
+function BrandLogo({ onNavigate, compact = false }) {
+  return (
+    <Link
+      href="#home"
+      onClick={onNavigate}
+      className="group relative flex shrink-0 items-center gap-2.5 sm:gap-3"
+      aria-label="Digital Drifters — home"
+    >
+      <span
+        className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#FAF8F3] ring-1 ring-[#0B1F4E]/12 transition duration-300 group-hover:ring-[#C67D4D]/45 group-hover:shadow-[0_0_22px_-4px_rgba(198,125,77,0.5)] group-focus-visible:ring-2 group-focus-visible:ring-[#0B1F4E]/40 ${
+          compact ? "h-10 w-10" : "h-11 w-11 sm:h-12 sm:w-12"
+        }`}
+      >
+        <Image
+          src="/logo.png"
+          alt=""
+          width={160}
+          height={160}
+          className="h-[190%] w-[190%] max-w-none object-cover object-center transition duration-500 ease-out group-hover:scale-[1.06]"
+          priority
+        />
+        <span
+          className="pointer-events-none absolute inset-0 rounded-full bg-linear-to-br from-[#7FE5E5]/10 via-transparent to-[#C67D4D]/15 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          aria-hidden
+        />
+      </span>
+
+      {!compact && (
+        <span className="hidden min-w-0 flex-col leading-tight min-[420px]:flex">
+          <span className="truncate text-[13px] font-bold uppercase tracking-[0.14em] text-[#0B1F4E] sm:text-sm">
+            Digital Drifters
+          </span>
+          <span className="truncate text-[9px] font-semibold uppercase tracking-[0.22em] text-[#0B1F4E]/50 sm:text-[10px]">
+            Explore · Connect · Create
+          </span>
+        </span>
+      )}
     </Link>
   );
 }
@@ -102,15 +144,11 @@ export function Navbar() {
   const closeMenu = () => setOpen(false);
 
   const shellClass = onHero
-    ? "border-white/12 bg-black/50 shadow-[0_12px_48px_-8px_rgba(0,0,0,0.65)]"
-    : "border-white/10 bg-zinc-950/92 shadow-[0_12px_40px_-10px_rgba(0,0,0,0.55)]";
+    ? "border-slate-200 bg-white/90 shadow-[0_12px_48px_-8px_rgba(15,23,42,0.18)]"
+    : "border-slate-200 bg-white/95 shadow-[0_12px_40px_-10px_rgba(15,23,42,0.15)]";
 
-  const logoClass =
-    "bg-linear-to-r from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent";
-
-  const menuBtnClass = onHero
-    ? "inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition hover:border-white/30 hover:bg-white/15 md:hidden"
-    : "inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-zinc-900/90 text-zinc-100 backdrop-blur-md transition hover:border-white/20 hover:bg-zinc-800 md:hidden";
+  const menuBtnClass =
+    "inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-[#0B1F4E] backdrop-blur-md transition hover:border-[#0B1F4E]/30 hover:bg-slate-50 md:hidden";
 
   return (
     <>
@@ -123,13 +161,7 @@ export function Navbar() {
         <div
           className={`pointer-events-auto mx-auto flex w-full max-w-[min(100%,1600px)] items-center gap-4 rounded-full border px-5 py-3.5 backdrop-blur-2xl sm:gap-5 sm:px-7 sm:py-4 lg:px-10 ${shellClass}`}
         >
-          <Link
-            href="#home"
-            onClick={closeMenu}
-            className="shrink-0 text-base font-semibold tracking-tight sm:text-lg"
-          >
-            <span className={logoClass}>Digital Drifters</span>
-          </Link>
+          <BrandLogo onNavigate={closeMenu} />
 
           <nav
             className="hidden flex-1 items-center justify-center gap-1 md:flex lg:gap-2"
@@ -173,7 +205,7 @@ export function Navbar() {
             <motion.button
               type="button"
               aria-label="Close menu overlay"
-              className="fixed inset-0 z-60 bg-black/70 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-60 bg-slate-900/50 backdrop-blur-sm md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -184,12 +216,23 @@ export function Navbar() {
               id="mobile-menu"
               role="dialog"
               aria-modal="true"
-              className="fixed inset-y-0 right-0 z-70 flex w-[min(100%,20rem)] flex-col border-l border-white/10 bg-zinc-950/98 p-6 pt-24 shadow-2xl shadow-black/50 backdrop-blur-2xl md:hidden"
+              className="fixed inset-y-0 right-0 z-70 flex w-[min(100%,20rem)] flex-col border-l border-slate-200 bg-white p-6 pt-6 shadow-2xl shadow-slate-900/20 backdrop-blur-2xl md:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 320, damping: 34 }}
             >
+              <div className="mb-6 flex items-center justify-between border-b border-slate-100 pb-5">
+                <BrandLogo onNavigate={closeMenu} compact />
+                <button
+                  type="button"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-[#0B1F4E] transition hover:border-[#0B1F4E]/30 hover:bg-slate-50"
+                  onClick={closeMenu}
+                  aria-label="Close menu"
+                >
+                  <MenuIcon open />
+                </button>
+              </div>
               <nav className="flex flex-col gap-1" aria-label="Mobile">
                 {navItems.map((item, i) => (
                   <motion.div
@@ -205,7 +248,7 @@ export function Navbar() {
                     <Link
                       href={item.href}
                       onClick={closeMenu}
-                      className="block rounded-xl px-3 py-3 text-base font-medium text-zinc-200 transition hover:bg-white/5 hover:text-white"
+                      className="block rounded-xl px-3 py-3 text-base font-medium text-[#0B1F4E] transition hover:bg-slate-50"
                     >
                       {item.label}
                     </Link>

@@ -142,7 +142,7 @@ function ServiceCard({ title, description, Icon, transition, reduceMotion }) {
       whileHover={hoverMotion}
       viewport={{ once: true, margin: "-80px", amount: 0.2 }}
       transition={transition}
-      className="group relative flex min-h-[300px] flex-col overflow-visible rounded-2xl border border-orange-500/30 bg-black p-7 pb-8 pt-14 shadow-[0_0_40px_-12px_rgba(249,115,22,0.22)] transition-[border-color,box-shadow] duration-300 ease-out will-change-transform hover:border-orange-500/55 hover:shadow-[0_0_52px_-6px_rgba(249,115,22,0.42)] sm:min-h-[320px] sm:pt-16 md:min-h-[340px]"
+      className="group relative flex min-h-[300px] flex-col overflow-visible rounded-2xl border border-orange-500/30 bg-white p-7 pb-8 pt-14 shadow-[0_0_40px_-12px_rgba(249,115,22,0.22)] transition-[border-color,box-shadow] duration-300 ease-out will-change-transform hover:border-orange-500/55 hover:shadow-[0_0_52px_-6px_rgba(249,115,22,0.42)] sm:min-h-[320px] sm:pt-16 md:min-h-[340px]"
     >
       <div
         className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl opacity-[0.65] transition-opacity duration-500 ease-out group-hover:opacity-100"
@@ -151,7 +151,7 @@ function ServiceCard({ title, description, Icon, transition, reduceMotion }) {
         <CardWaves />
       </div>
       <motion.div
-        className="absolute -left-1 -top-3 z-20 flex h-14 w-14 items-center justify-center rounded-full bg-orange-500 ring-4 ring-black transition-[transform,box-shadow] duration-300 ease-out group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:shadow-[0_0_20px_-2px_rgba(249,115,22,0.85)] sm:h-15 sm:w-15"
+        className="absolute -left-1 -top-3 z-20 flex h-14 w-14 items-center justify-center rounded-full bg-orange-500/10 ring-4 ring-white transition-[transform,box-shadow] duration-300 ease-out group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:shadow-[0_0_20px_-2px_rgba(249,115,22,0.55)] sm:h-15 sm:w-15"
         whileHover={
           reduceMotion
             ? {}
@@ -159,14 +159,14 @@ function ServiceCard({ title, description, Icon, transition, reduceMotion }) {
         }
         aria-hidden
       >
-        <div className="absolute inset-0 rounded-full ring-1 ring-orange-500/80 ring-offset-2 ring-offset-black group-hover:ring-orange-500" />
-        <Icon className="relative h-6 w-6 text-white sm:h-7 sm:w-7" />
+        <div className="absolute inset-0 rounded-full ring-1 ring-orange-500/50 ring-offset-2 ring-offset-white group-hover:ring-orange-500" />
+        <Icon className="relative h-6 w-6 text-[#083157] sm:h-7 sm:w-7" />
       </motion.div>
       <div className="relative z-10 mt-1 flex flex-1 flex-col">
-        <h3 className="text-xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-orange-500 sm:text-2xl">
+        <h3 className="text-xl font-bold tracking-tight text-[#083157] transition-colors duration-300 sm:text-2xl">
           {title}
         </h3>
-        <p className="mt-4 flex-1 text-base leading-relaxed text-white/80 transition-[color] duration-300 group-hover:text-white/95 sm:text-[1.0625rem] sm:leading-relaxed">
+        <p className="mt-4 flex-1 text-base leading-relaxed text-black/80 transition-[color] duration-300 group-hover:text-black sm:text-[1.0625rem] sm:leading-relaxed">
           {description}
         </p>
       </div>
@@ -186,14 +186,17 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative scroll-mt-24 bg-black py-20 text-white sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 bg-white py-20 text-[#083157] sm:py-24 lg:py-28"
       aria-labelledby="services-heading"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(249,115,22,0.18),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(249,115,22,0.06),transparent_55%)]"
         aria-hidden
       />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-orange-500/40 to-transparent" aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-[#083157]/40 to-transparent"
+        aria-hidden
+      />
 
       <div className="relative mx-auto w-full max-w-[min(100%,1600px)] px-5 sm:px-8 lg:px-10 xl:px-14">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-12 lg:items-start">
@@ -209,27 +212,28 @@ export function ServicesSection() {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.22em] text-orange-500 sm:text-sm sm:tracking-[0.26em]">
+              <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.22em] text-[#083157] sm:text-sm sm:tracking-[0.26em]">
                 <IconHome className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
                 Services we offer
               </p>
               <h2
                 id="services-heading"
-                className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl sm:leading-[1.08] lg:text-[3.15rem] lg:leading-[1.06]"
+                className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-[#083157] sm:text-5xl sm:leading-[1.08] lg:text-[3.15rem] lg:leading-[1.06]"
               >
                 Solutions every business needs
               </h2>
-              <p className="mt-6 max-w-lg text-base leading-relaxed text-white/80 sm:text-lg sm:leading-relaxed">
+              <p className="mt-6 max-w-lg text-base leading-relaxed text-black sm:text-lg sm:leading-relaxed">
                 Digital Drifters helps teams run operations, ship custom software,
                 grow on eBay and Amazon, and run call-center support—practical
                 partnerships for businesses that want momentum without noise. We
                 also support adjacent ventures when the fit is right.
               </p>
+
               <Link
                 href="#contact"
-                className="mt-10 inline-flex items-center justify-center rounded-full border-2 border-orange-500 bg-black px-9 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_0_28px_-4px_rgba(249,115,22,0.55)] transition hover:bg-orange-500 hover:text-black hover:shadow-[0_0_36px_-2px_rgba(249,115,22,0.65)] sm:px-10 sm:text-sm sm:tracking-[0.18em]"
+                className="mt-10 inline-flex items-center justify-center rounded-lg bg-red-600 px-9 py-4 text-sm font-bold text-white transition-all duration-300 hover:bg-red-700 hover:shadow-lg"
               >
-                More services
+                More Services
               </Link>
             </motion.div>
           </div>
