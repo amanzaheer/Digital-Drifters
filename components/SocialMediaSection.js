@@ -154,11 +154,11 @@ function MetricCard({ item, index, reduceMotion }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.45, delay: reduceMotion ? 0 : index * 0.06 }}
-      className="rounded-2xl border border-orange-500/30 bg-black p-5 text-center shadow-[0_0_32px_-12px_rgba(249,115,22,0.25)] sm:p-6"
+      className="rounded-2xl border border-orange-500/30 bg-white p-5 text-center shadow-[0_4px_24px_-8px_rgba(15,23,42,0.12)] sm:p-6"
     >
-      <p className="text-3xl font-black tracking-tight text-orange-500 sm:text-4xl">{item.value}</p>
-      <p className="mt-2 text-sm font-bold uppercase tracking-wider text-white">{item.label}</p>
-      <p className="mt-1.5 text-xs leading-relaxed text-white/70 sm:text-sm">{item.detail}</p>
+      <p className="text-3xl font-black tracking-tight text-red-600 sm:text-4xl">{item.value}</p>
+      <p className="mt-2 text-sm font-bold uppercase tracking-wider text-[#0B1F4E]">{item.label}</p>
+      <p className="mt-1.5 text-xs leading-relaxed text-black sm:text-sm">{item.detail}</p>
     </motion.div>
   );
 }
@@ -169,11 +169,11 @@ export function SocialMediaSection() {
   return (
     <section
       id="social-media"
-      className="relative scroll-mt-24 bg-black py-20 text-white sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 bg-white py-20 text-slate-900 sm:py-24 lg:py-28"
       aria-labelledby="social-heading"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_50%_at_80%_20%,rgba(249,115,22,0.12),transparent_50%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_50%_at_80%_20%,rgba(249,115,22,0.08),transparent_50%)]"
         aria-hidden
       />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-orange-500/35 to-transparent" aria-hidden />
@@ -186,17 +186,17 @@ export function SocialMediaSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.55 }}
         >
-          <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-orange-500 sm:text-sm sm:tracking-[0.26em]">
+          <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-black sm:text-sm sm:tracking-[0.26em]">
             <IconMegaphone className="h-4 w-4 sm:h-5 sm:w-5" />
             Social media management
           </p>
           <h2
             id="social-heading"
-            className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]"
+            className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-[#0B1F4E] sm:text-4xl lg:text-[2.75rem]"
           >
             Social presence that builds trust
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">
+          <p className="mt-5 text-base leading-relaxed text-black sm:text-lg">
             Digital Drifters manages social channels with clear governance, measurable
             reporting, and on-brand engagement—for startups, retailers, SaaS, agencies,
             and established companies in any niche that needs professional reach.
@@ -210,16 +210,16 @@ export function SocialMediaSection() {
         </div>
 
         <motion.div
-          className="mt-14 rounded-2xl border border-orange-500/40 bg-orange-500/5 px-5 py-5 sm:px-8 sm:py-6"
+          className="mt-14 rounded-2xl border border-orange-500/40 bg-orange-50 px-5 py-5 sm:px-8 sm:py-6"
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-center text-sm font-bold uppercase tracking-[0.2em] text-orange-500 sm:text-base">
+          <p className="text-center text-sm font-bold uppercase tracking-[0.2em] text-red-600 sm:text-base">
             Built for any company &amp; niche
           </p>
-          <p className="mx-auto mt-3 max-w-3xl text-center text-sm leading-relaxed text-white/85 sm:text-base">
+          <p className="mx-auto mt-3 max-w-3xl text-center text-sm leading-relaxed text-black sm:text-base">
             Whether you sell products, deliver services, or run operations at scale—we
             plan content, coordinate approvals, and keep every channel aligned with
             leadership-ready reporting your team can act on.
@@ -234,13 +234,13 @@ export function SocialMediaSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: reduceMotion ? 0 : i * 0.05 }}
-              className="flex flex-col items-center rounded-2xl border border-orange-500/25 bg-black px-4 py-6 text-center transition hover:border-orange-500/50"
+              className="flex flex-col items-center rounded-2xl border border-orange-500/25 bg-white px-4 py-6 text-center shadow-[0_2px_16px_-8px_rgba(15,23,42,0.1)] transition hover:border-orange-500/50"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-orange-500 text-black">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-red-600 text-white">
                 <p.Icon className="h-5 w-5" />
               </span>
-              <p className="mt-4 text-sm font-bold text-white">{p.name}</p>
-              <p className="mt-2 text-xs leading-relaxed text-white/70">{p.role}</p>
+              <p className="mt-4 text-sm font-bold text-black">{p.name}</p>
+              <p className="mt-2 text-xs leading-relaxed text-black">{p.role}</p>
             </motion.div>
           ))}
         </div>
@@ -252,17 +252,17 @@ export function SocialMediaSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-xl font-bold text-white sm:text-2xl">
+            <h3 className="text-xl font-bold text-[#0B1F4E] sm:text-2xl">
               What we manage for you
             </h3>
             <ul className="mt-6 flex flex-col gap-5">
               {SERVICE_FOCUS.map((item) => (
                 <li
                   key={item.title}
-                  className="rounded-xl border border-orange-500/20 bg-black p-5 transition hover:border-orange-500/40"
+                  className="rounded-xl border border-orange-500/20 bg-white p-5 shadow-[0_2px_14px_-8px_rgba(15,23,42,0.1)] transition hover:border-orange-500/40"
                 >
-                  <p className="font-bold text-orange-500">{item.title}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/80 sm:text-base">
+                  <p className="font-bold text-red-600">{item.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-black sm:text-base">
                     {item.text}
                   </p>
                 </li>
@@ -271,7 +271,7 @@ export function SocialMediaSection() {
           </motion.div>
 
           <motion.div
-            className="rounded-2xl border border-orange-500/30 bg-black p-5 sm:p-7"
+            className="rounded-2xl border border-orange-500/30 bg-white p-5 shadow-[0_4px_24px_-8px_rgba(15,23,42,0.12)] sm:p-7"
             initial={reduceMotion ? false : { opacity: 0, x: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -279,14 +279,14 @@ export function SocialMediaSection() {
           >
             <div className="flex flex-wrap items-end justify-between gap-3">
               <div>
-                <h3 className="text-xl font-bold text-white sm:text-2xl">
+                <h3 className="text-xl font-bold text-[#0B1F4E] sm:text-2xl">
                   Performance overview
                 </h3>
-                <p className="mt-1 text-xs text-white/60 sm:text-sm">
+                <p className="mt-1 text-xs text-slate-500 sm:text-sm">
                   Sample reporting framework · illustrative trends
                 </p>
               </div>
-              <span className="rounded-full border border-orange-500/50 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-orange-500">
+              <span className="rounded-full border border-orange-500/50 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-red-600">
                 Monthly
               </span>
             </div>
@@ -297,26 +297,26 @@ export function SocialMediaSection() {
                 return (
                   <div key={bar.month} className="flex flex-1 flex-col items-center gap-2">
                     <motion.div
-                      className="w-full max-w-8 rounded-t-md bg-orange-500 sm:max-w-10"
+                      className="w-full max-w-8 rounded-t-md bg-red-600 sm:max-w-10"
                       initial={reduceMotion ? false : { height: 0 }}
                       whileInView={{ height: barHeight }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                     />
-                    <span className="text-[10px] font-medium text-white/60 sm:text-xs">{bar.month}</span>
+                    <span className="text-[10px] font-medium text-slate-500 sm:text-xs">{bar.month}</span>
                   </div>
                 );
               })}
             </div>
 
-            <p className="mt-4 text-center text-xs font-bold uppercase tracking-wider text-white/50">
+            <p className="mt-4 text-center text-xs font-bold uppercase tracking-wider text-slate-400">
               Organic reach index (structured programs)
             </p>
 
             <div className="mt-8 overflow-x-auto rounded-xl border border-orange-500/20">
               <table className="w-full min-w-[320px] text-left text-sm">
                 <thead>
-                  <tr className="border-b border-orange-500/25 bg-orange-500/10 text-[10px] font-bold uppercase tracking-wider text-orange-500">
+                  <tr className="border-b border-orange-500/25 bg-orange-50 text-[10px] font-bold uppercase tracking-wider text-orange-500">
                     <th className="px-4 py-3">Metric</th>
                     <th className="px-4 py-3">Period</th>
                     <th className="px-4 py-3">Trend</th>
@@ -327,12 +327,12 @@ export function SocialMediaSection() {
                   {REPORTING_ROWS.map((row) => (
                     <tr
                       key={row.metric}
-                      className="border-b border-white/5 text-white/85 last:border-0"
+                      className="border-b border-slate-100 text-slate-700 last:border-0"
                     >
-                      <td className="px-4 py-3 font-medium text-white">{row.metric}</td>
-                      <td className="px-4 py-3 text-white/70">{row.period}</td>
-                      <td className="px-4 py-3 font-semibold text-orange-500">{row.trend}</td>
-                      <td className="px-4 py-3 text-white/75">{row.status}</td>
+                      <td className="px-4 py-3 font-medium text-[#0B1F4E]">{row.metric}</td>
+                      <td className="px-4 py-3 text-slate-500">{row.period}</td>
+                      <td className="px-4 py-3 font-semibold text-red-600">{row.trend}</td>
+                      <td className="px-4 py-3 text-slate-600">{row.status}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -348,18 +348,18 @@ export function SocialMediaSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h3 className="text-center text-xl font-bold text-white sm:text-2xl">
+          <h3 className="text-center text-xl font-bold text-[#0B1F4E] sm:text-2xl">
             How we manage every channel
           </h3>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {PROCESS.map((step, i) => (
               <div
                 key={step.step}
-                className="relative rounded-2xl border border-orange-500/25 bg-black p-5 pt-6"
+                className="relative rounded-2xl border border-orange-500/25 bg-white p-5 pt-6 shadow-[0_2px_14px_-8px_rgba(15,23,42,0.1)]"
               >
-                <span className="text-2xl font-black text-orange-500/80">{step.step}</span>
-                <p className="mt-2 text-sm font-bold text-white sm:text-base">{step.title}</p>
-                <p className="mt-2 text-xs leading-relaxed text-white/75 sm:text-sm">{step.text}</p>
+                <span className="text-2xl font-black text-red-500/80">{step.step}</span>
+                <p className="mt-2 text-sm font-bold text-black sm:text-base">{step.title}</p>
+                <p className="mt-2 text-xs leading-relaxed text-black sm:text-sm">{step.text}</p>
                 {i < PROCESS.length - 1 ? (
                   <span
                     className="pointer-events-none absolute -right-2 top-1/2 hidden h-px w-4 bg-orange-500/40 lg:block"
@@ -378,12 +378,12 @@ export function SocialMediaSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
         >
-          <p className="max-w-2xl text-base text-white/80 sm:text-lg">
+          <p className="max-w-2xl text-base text-slate-700 sm:text-lg">
             Ready to grow your brand with accountable, data-led social media management?
           </p>
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center rounded-full border-2 border-orange-500 bg-black px-9 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_0_28px_-4px_rgba(249,115,22,0.55)] transition hover:bg-orange-500 hover:text-black sm:text-sm"
+            className="inline-flex items-center justify-center rounded-full border-2 border-red-600 bg-red-600 px-9 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_8px_24px_-6px_rgba(220,38,38,0.5)] transition hover:bg-red-700 hover:border-red-700 sm:text-sm"
           >
             Discuss social media partnership
           </Link>

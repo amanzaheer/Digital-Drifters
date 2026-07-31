@@ -49,7 +49,7 @@ export function HeroServiceSlider() {
 
   return (
     <div className="relative mx-auto w-full max-w-md lg:max-w-lg">
-      <div className="relative aspect-[9/10] w-full overflow-hidden rounded-3xl border border-white/25 bg-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-md dark:border-white/15 dark:bg-zinc-950/30">
+      <div className="relative aspect-[9/10] w-full overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_24px_60px_rgba(15,23,42,0.12)]">
         <AnimatePresence mode="wait">
           <motion.div
             key={`${index}-${src}`}
@@ -77,7 +77,7 @@ export function HeroServiceSlider() {
           </motion.div>
         </AnimatePresence>
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/50 to-transparent"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/40 to-transparent"
           aria-hidden
         />
       </div>
@@ -88,7 +88,9 @@ export function HeroServiceSlider() {
             type="button"
             onClick={() => setIndex(i)}
             className={`h-2 rounded-full transition-all ${
-              i === index ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
+              i === index
+                ? "w-8 bg-[#E10E1D]"
+                : "w-2 bg-slate-300 hover:bg-[#E10E1D]/50"
             }`}
             aria-label={`Show slide ${i + 1}`}
           />

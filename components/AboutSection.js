@@ -79,7 +79,7 @@ function ProgressRing({ value, reduceMotion }) {
           cy="50"
           r={r}
           fill="none"
-          className="stroke-white/10"
+          className="stroke-slate-200"
           strokeWidth="7"
         />
         <motion.circle
@@ -97,7 +97,7 @@ function ProgressRing({ value, reduceMotion }) {
           transition={{ duration: reduceMotion ? 0.01 : 1.2, ease: [0.22, 1, 0.36, 1] }}
         />
       </svg>
-      <span className="absolute text-center text-2xl font-black tracking-tight text-white sm:text-3xl">
+      <span className="absolute text-center text-2xl font-black tracking-tight text-[#0B1F4E] sm:text-3xl">
         {value}%
       </span>
     </div>
@@ -110,11 +110,11 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative scroll-mt-24 bg-black py-20 text-white sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 bg-white py-20 text-slate-900 sm:py-24 lg:py-28"
       aria-labelledby="about-heading"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_20%_40%,rgba(249,115,22,0.12),transparent_50%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_20%_40%,rgba(249,115,22,0.08),transparent_50%)]"
         aria-hidden
       />
 
@@ -147,7 +147,7 @@ export function AboutSection() {
                     "minmax(0, 1.2fr) minmax(0, 0.22fr) minmax(0, 0.95fr)",
                 }}
               >
-                <div className="relative min-h-0 overflow-hidden rounded-3xl ring-1 ring-orange-500/25 [grid-column:1] [grid-row:1/span_2]">
+                <div className="relative min-h-0 overflow-hidden rounded-3xl ring-1 ring-red-600 [grid-column:1] [grid-row:1/span_2]">
                   <Image
                     src={COLLAGE.main}
                     alt="Team collaborating at Digital Drifters"
@@ -156,7 +156,7 @@ export function AboutSection() {
                     sizes="(max-width: 1024px) 90vw, 40vw"
                   />
                 </div>
-                <div className="relative aspect-square min-h-0 overflow-hidden rounded-full ring-1 ring-orange-500/25 [grid-column:2] [grid-row:1]">
+                <div className="relative aspect-square min-h-0 overflow-hidden rounded-full ring-1 ring-red-600 [grid-column:2] [grid-row:1]">
                   <Image
                     src={COLLAGE.topRight}
                     alt="Team workshop"
@@ -174,7 +174,7 @@ export function AboutSection() {
                     sizes="(max-width: 1024px) 24vw, 12vw"
                   />
                 </div>
-                <div className="relative min-h-[7.5rem] min-w-0 overflow-hidden rounded-3xl ring-1 ring-orange-500/25 [grid-column:2] [grid-row:3] sm:min-h-[9rem]">
+                <div className="relative min-h-[7.5rem] min-w-0 overflow-hidden rounded-3xl ring-1 ring-red-600 [grid-column:2] [grid-row:3] sm:min-h-[9rem]">
                   <Image
                     src={COLLAGE.bottomRight}
                     alt="Team in the office"
@@ -187,7 +187,7 @@ export function AboutSection() {
 
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                 <div
-                  className="pointer-events-auto flex h-[9.5rem] w-[9.5rem] flex-col items-center justify-center rounded-full bg-orange-500 px-4 text-center shadow-[0_0_60px_-8px_rgba(249,115,22,0.75)] ring-4 ring-black/80 sm:h-[11rem] sm:w-[11rem]"
+                  className="pointer-events-auto flex h-[9.5rem] w-[9.5rem] flex-col items-center justify-center rounded-full bg-[#0B1F4E] px-4 text-center shadow-[0_0_50px_-8px_rgba(11,31,78,0.55)] ring-4 ring-white sm:h-[11rem] sm:w-[11rem]"
                   aria-label="Over ten years combined experience across the team"
                 >
                   <IconTrophy className="mb-1 h-6 w-6 text-white sm:h-7 sm:w-7" />
@@ -213,33 +213,33 @@ export function AboutSection() {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.22em] text-orange-500 sm:text-sm sm:tracking-[0.26em]">
+            <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.22em] text-red-600 sm:text-sm sm:tracking-[0.26em]">
               <IconHome className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
               Introduction to us
             </p>
             <h2
               id="about-heading"
-              className="mt-4 text-3xl font-bold leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]"
+              className="mt-4 text-3xl font-bold leading-[1.12] tracking-tight text-[#0B1F4E] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]"
             >
               Helping fast-moving businesses succeed
             </h2>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
               Digital Drifters partners with teams that need operations tightened,
               software shipped, eBay and Amazon channels grown, and call-center
               coverage that stays on-brand. We keep scope honest, communication
-              direct, and outcomes measurable—black-and-orange clarity, no fluff.
+              direct, and outcomes measurable—clear delivery, no fluff.
             </p>
 
-            <div className="my-10 h-px w-full max-w-xl bg-linear-to-r from-transparent via-white/20 to-transparent" />
+            <div className="my-10 h-px w-full max-w-xl bg-linear-to-r from-transparent via-slate-200 to-transparent" />
 
             <div className="grid gap-10 sm:grid-cols-2 sm:gap-12">
               <ul className="flex flex-col gap-5">
                 {FEATURES.map((line) => (
-                  <li key={line} className="flex gap-3 text-sm leading-snug text-white sm:text-base">
-                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-orange-500">
-                      <IconCheck className="h-3.5 w-3.5 text-black" />
+                  <li key={line} className="flex gap-3 text-sm leading-snug text-slate-900 sm:text-base">
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0B1F4E]">
+                      <IconCheck className="h-3.5 w-3.5 text-white" />
                     </span>
-                    <span className="text-white/90">{line}</span>
+                    <span className="text-slate-700">{line}</span>
                   </li>
                 ))}
               </ul>
@@ -247,10 +247,10 @@ export function AboutSection() {
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
                 <ProgressRing value={85} reduceMotion={reduceMotion === true} />
                 <div>
-                  <h3 className="text-lg font-bold text-white sm:text-xl">
+                  <h3 className="text-lg font-bold text-[#0B1F4E] sm:text-xl">
                     Agency delivery
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/75 sm:text-base">
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
                     Roadmaps, builds, and support cycles tuned to how your business
                     actually runs—so velocity shows up in revenue and retention, not
                     slide decks alone.
@@ -259,9 +259,9 @@ export function AboutSection() {
               </div>
             </div>
 
-            <div className="mt-12 flex max-w-xl flex-col gap-8 border-t border-white/10 pt-10 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+            <div className="mt-12 flex max-w-xl flex-col gap-8 border-t border-slate-200 pt-10 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
               <div className="flex items-center gap-4">
-                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-orange-500/50">
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-[#0B1F4E]/40">
                   <Image
                     src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=128&h=128&q=80"
                     alt="Digital Drifters leadership"
@@ -271,17 +271,17 @@ export function AboutSection() {
                   />
                 </div>
                 <div>
-                  <p className="text-base font-bold text-white sm:text-lg">
+                  <p className="text-base font-bold text-[#0B1F4E] sm:text-lg">
                     Digital Drifters
                   </p>
-                  <p className="mt-0.5 text-xs font-bold uppercase tracking-[0.2em] text-orange-500 sm:text-sm">
+                  <p className="mt-0.5 text-xs font-bold uppercase tracking-[0.2em] text-red-600 sm:text-sm">
                     Leadership · Delivery
                   </p>
                 </div>
               </div>
               <Link
                 href="#services"
-                className="inline-flex w-fit items-center justify-center rounded-xl border-2 border-orange-500 bg-black px-7 py-3.5 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_0_28px_-4px_rgba(249,115,22,0.5)] transition hover:bg-orange-500 hover:text-black hover:shadow-[0_0_40px_-2px_rgba(249,115,22,0.65)] sm:text-sm"
+                className="inline-flex w-fit items-center justify-center rounded-xl border-2 border-red-600 bg-red-600 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_8px_24px_-6px_rgba(220,38,38,0.5)] transition hover:bg-red-700 hover:border-red-700 sm:text-sm"
               >
                 Learn more
               </Link>

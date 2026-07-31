@@ -74,7 +74,7 @@ function TeamPhoto({ name, image, fallback, featured }) {
   if (failed) {
     return (
       <div
-        className={`relative overflow-hidden rounded-2xl border-2 border-orange-500/50 bg-linear-to-br from-orange-500/20 to-black ${frameClass}`}
+        className={`relative overflow-hidden rounded-2xl border-2 border-orange-500/50 bg-linear-to-br from-orange-500/15 to-slate-100 ${frameClass}`}
       >
         <div className="flex h-full w-full items-center justify-center">
           <span className="text-5xl font-black tracking-tight text-orange-500/90 sm:text-6xl">
@@ -87,7 +87,7 @@ function TeamPhoto({ name, image, fallback, featured }) {
 
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl border-2 bg-black ${frameClass} ${featured ? "border-orange-500 shadow-[0_0_48px_-8px_rgba(249,115,22,0.45)]" : "border-orange-500/35"
+      className={`relative overflow-hidden rounded-2xl border-2 bg-slate-100 shadow-[0_4px_24px_-8px_rgba(15,23,42,0.15)] ${frameClass} ${featured ? "border-orange-500 shadow-[0_0_32px_-8px_rgba(249,115,22,0.35)]" : "border-orange-500/35"
         }`}
     >
       <Image
@@ -105,7 +105,7 @@ function TeamPhoto({ name, image, fallback, featured }) {
         }}
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent"
+        className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent"
         aria-hidden
       />
     </div>
@@ -136,7 +136,7 @@ function TeamMemberCard({ member, index, reduceMotion }) {
         />
       </div>
       <h3
-        className={`mt-5 font-bold tracking-tight text-white ${isFeatured ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"}`}
+        className={`mt-5 font-bold tracking-tight text-[#0B1F4E] ${isFeatured ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"}`}
       >
         {member.name}
       </h3>
@@ -155,11 +155,11 @@ export function TeamSection() {
   return (
     <section
       id="team"
-      className="relative scroll-mt-24 bg-black py-20 text-white sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 bg-white py-20 text-slate-900 sm:py-24 lg:py-28"
       aria-labelledby="team-heading"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(249,115,22,0.12),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(249,115,22,0.08),transparent_55%)]"
         aria-hidden
       />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-orange-500/35 to-transparent" aria-hidden />
@@ -178,11 +178,11 @@ export function TeamSection() {
           </p>
           <h2
             id="team-heading"
-            className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.65rem]"
+            className="mt-4 text-3xl font-bold tracking-tight text-[#0B1F4E] sm:text-4xl lg:text-[2.65rem]"
           >
             The team behind Digital Drifters
           </h2>
-          <p className="mt-4 inline-flex items-center justify-center rounded-full border border-orange-500/50 bg-orange-500/10 px-5 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-orange-500 sm:text-[11px]">
+          <p className="mt-4 inline-flex items-center justify-center rounded-full border border-orange-500/50 bg-orange-50 px-5 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-orange-500 sm:text-[11px]">
             Leadership
           </p>
         </motion.header>
@@ -199,7 +199,7 @@ export function TeamSection() {
         </div>
 
         <motion.div
-          className="mx-auto mt-16 max-w-4xl rounded-2xl border border-orange-500/30 bg-black px-6 py-8 text-center shadow-[0_0_40px_-12px_rgba(249,115,22,0.25)] sm:px-10 sm:py-10"
+          className="mx-auto mt-16 max-w-4xl rounded-2xl border border-orange-500/30 bg-white px-6 py-8 text-center shadow-[0_4px_32px_-10px_rgba(15,23,42,0.15)] sm:px-10 sm:py-10"
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -208,21 +208,21 @@ export function TeamSection() {
           <p className="text-2xl font-black tracking-tight text-orange-500 sm:text-3xl">
             20–25+ professionals
           </p>
-          <p className="mt-4 text-base leading-relaxed text-white/85 sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-slate-700 sm:text-lg">
             Beyond our leadership trio, Digital Drifters runs as a full delivery
             team of more than twenty specialists—covering{" "}
-            <span className="text-white">social media management</span>,{" "}
-            <span className="text-white">software development</span>,{" "}
-            <span className="text-white">eCommerce</span> (eBay, Amazon, and
-            owned stores), <span className="text-white">call-center operations</span>,
-            and day-to-day <span className="text-white">business operations</span>{" "}
+            <span className="font-semibold text-[#0B1F4E]">social media management</span>,{" "}
+            <span className="font-semibold text-[#0B1F4E]">software development</span>,{" "}
+            <span className="font-semibold text-[#0B1F4E]">eCommerce</span> (eBay, Amazon, and
+            owned stores), <span className="font-semibold text-[#0B1F4E]">call-center operations</span>,
+            and day-to-day <span className="font-semibold text-[#0B1F4E]">business operations</span>{" "}
             for partners who need accountable execution at scale.
           </p>
           <ul className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             {TEAM_PILLARS.map((pillar) => (
               <li
                 key={pillar}
-                className="rounded-full border border-orange-500/40 bg-orange-500/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider text-orange-500 sm:text-[11px]"
+                className="rounded-full border border-orange-500/40 bg-orange-50 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider text-orange-500 sm:text-[11px]"
               >
                 {pillar}
               </li>
