@@ -7,7 +7,7 @@ const EMAIL = "digitaldrifters12@gmail.com";
 const LOCATIONS = [
   ["London (HQ)", "Manchester", "Birmingham", "Leeds", "Bristol"],
   ["Edinburgh", "Cardiff", "Glasgow", "Liverpool", "Dublin"],
-  ["Dubai", "Singapore", "New York", "Toronto", "Sydney"],
+  ["Dallas (TX)", " Los Angeles (CA)", "New York", "Chicago (IL)", "Houston (TX)"],
 ];
 
 const LEGAL_LINKS = [

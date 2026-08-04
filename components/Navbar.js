@@ -9,6 +9,7 @@ const navItems = [
   { href: "#home", label: "Home" },
   { href: "#services", label: "Services" },
   { href: "#work", label: "Work" },
+  { href: "#projects", label: "Project" },
   { href: "#ai", label: "AI" },
   { href: "#social-media", label: "Social" },
   { href: "#about", label: "About" },
@@ -50,7 +51,7 @@ function BrandLogo({ onNavigate, compact = false }) {
         }`}
       >
         <Image
-          src="/logo.png"
+          src="/2.png"
           alt=""
           width={160}
           height={160}

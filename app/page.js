@@ -11,7 +11,7 @@ import { TeamSection } from "@/components/TeamSection";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { CtaSection } from "@/components/CtaSection";
 import { Footer } from "@/components/Footer";
-
+import Projects from "@/components/Projects";
 export default function Home() {
   return (
     <main className="flex min-h-dvh flex-1 flex-col overflow-x-hidden bg-black">
@@ -23,6 +23,7 @@ export default function Home() {
       <SocialMediaSection />
       <AboutSection />
       <TeamSection />
+      <Projects/>
       <ReviewsSection />
       <CtaSection />
       <Footer />

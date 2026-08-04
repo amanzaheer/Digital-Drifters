@@ -5,253 +5,361 @@ import { motion, useReducedMotion } from "framer-motion";
 
 const OFFERINGS = [
   {
-    title: "Operation management",
+    title: "Operation Management",
     description:
       "Processes, delivery, and day-to-day operations aligned so your team ships work with clarity—not chaos.",
     Icon: IconLayers,
   },
   {
-    title: "Software development",
+    title: "Software Development",
     description:
-      "Custom software, integrations, and reliable systems built around how you actually run the business.",
+      "Custom software, integrations, and reliable systems built around how your business actually works.",
     Icon: IconCode,
   },
   {
-    title: "eCommerce — eBay & Amazon",
+    title: "eCommerce",
     description:
-      "Listings, catalog discipline, and marketplace growth so your store stays competitive where buyers already are.",
+      "Amazon & eBay marketplace management, listings, optimization, and sustainable store growth.",
     Icon: IconChart,
   },
   {
-    title: "Call center solutions",
+    title: "Call Center",
     description:
-      "Inbound and outbound support setups that keep customers heard and your brand consistent on every call.",
+      "Professional inbound and outbound customer support that strengthens your brand experience.",
     Icon: IconHeadset,
   },
 ];
 
 function IconHome({ className }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      aria-hidden
-    >
-      <path d="M3 10.5L12 4l9 6.5V20a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1v-9.5z" />
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M3 10.5L12 4l9 6.5V20H15v-6H9v6H3z" />
     </svg>
   );
 }
 
 function IconLayers({ className }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      aria-hidden
-    >
-      <path d="M12 4L4 8l8 4 8-4-8-4zM4 12l8 4 8-4M4 16l8 4 8-4" />
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M12 4L4 8l8 4 8-4-8-4zM4 12l8 4 8-4M4 16l8 4 8-4"/>
     </svg>
   );
 }
 
 function IconCode({ className }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      aria-hidden
-    >
-      <path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14" />
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/>
     </svg>
   );
 }
 
 function IconChart({ className }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      aria-hidden
-    >
-      <path d="M4 19h16M7 15l3-4 3 3 4-6M9 19V9" />
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M4 19h16M8 15l3-4 3 3 5-7"/>
     </svg>
   );
 }
 
 function IconHeadset({ className }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      aria-hidden
-    >
-      <path d="M5 16v-1a7 7 0 0114 0v1M5 16a2 2 0 002 2h1M19 16a2 2 0 01-2 2h-1M9 19h6M12 5v0" />
-    </svg>
-  );
-}
-
-function CardWaves() {
-  return (
-    <svg
-      className="absolute -bottom-2 -right-2 h-36 w-44 text-orange-500/[0.14]"
-      viewBox="0 0 120 100"
-      fill="none"
-      aria-hidden
-    >
-      <path
-        d="M0 80c20-8 40-8 60 0s40 8 60 0M0 92c22-6 44-6 66 0s44 6 66 0M10 65c18-10 36-10 54 0s36 10 54 0"
-        stroke="currentColor"
-        strokeWidth="1.25"
-      />
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M5 16v-1a7 7 0 0114 0v1M5 16a2 2 0 002 2h1M19 16a2 2 0 01-2 2h-1"/>
     </svg>
   );
 }
 
 function ServiceCard({ title, description, Icon, transition, reduceMotion }) {
-  const hoverMotion = reduceMotion
-    ? {}
-    : {
-        y: -8,
-        scale: 1.02,
-        transition: { type: "spring", stiffness: 420, damping: 26 },
-      };
-
   return (
     <motion.article
       initial={
         reduceMotion
-          ? { opacity: 1, y: 0 }
-          : { opacity: 0, y: 36, scale: 0.97 }
+          ? false
+          : {
+              opacity: 0,
+              y: 40,
+            }
       }
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      whileHover={hoverMotion}
-      viewport={{ once: true, margin: "-80px", amount: 0.2 }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+      }}
       transition={transition}
-      className="group relative flex min-h-[300px] flex-col overflow-visible rounded-2xl border border-orange-500/30 bg-white p-7 pb-8 pt-14 shadow-[0_0_40px_-12px_rgba(249,115,22,0.22)] transition-[border-color,box-shadow] duration-300 ease-out will-change-transform hover:border-orange-500/55 hover:shadow-[0_0_52px_-6px_rgba(249,115,22,0.42)] sm:min-h-[320px] sm:pt-16 md:min-h-[340px]"
+      whileHover={
+        reduceMotion
+          ? {}
+          : {
+              y: -12,
+              scale: 1.03,
+            }
+      }
+      className="
+      group
+      relative
+      overflow-hidden
+      rounded-[30px]
+      border
+    border-gray-200
+    bg-white
+      p-8
+      hadow-[0_15px_40px_rgba(15,23,42,.08)]
+      transition-all
+      duration-500
+    hover:border-[#DE0015]
+     hover:shadow-[0_35px_70px_rgba(8,49,87,.12)]
+"
     >
-      <div
-        className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl opacity-[0.65] transition-opacity duration-500 ease-out group-hover:opacity-100"
-        aria-hidden
-      >
-        <CardWaves />
-      </div>
+      {/* Top Line */}
+
+      <div className="absolute left-0 top-0 h-1 w-0 bg-[#DE0015] transition-all duration-500 group-hover:w-full" />
+
+      {/* Icon */}
+
       <motion.div
-        className="absolute -left-1 -top-3 z-20 flex h-14 w-14 items-center justify-center rounded-full bg-orange-500/10 ring-4 ring-white transition-[transform,box-shadow] duration-300 ease-out group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:shadow-[0_0_20px_-2px_rgba(249,115,22,0.55)] sm:h-15 sm:w-15"
         whileHover={
           reduceMotion
             ? {}
-            : { scale: 1.08, rotate: -4, transition: { duration: 0.25 } }
+            : {
+                rotate: -8,
+                scale: 1.1,
+              }
         }
-        aria-hidden
+        className="
+        flex
+        h-16
+        w-16
+        items-center
+        justify-center
+        rounded-full
+        bg-gradient-to-br
+      from-[#083157]
+     to-[#DE0015]
+       shadow-lg
+          "
       >
-        <div className="absolute inset-0 rounded-full ring-1 ring-orange-500/50 ring-offset-2 ring-offset-white group-hover:ring-orange-500" />
-        <Icon className="relative h-6 w-6 text-[#083157] sm:h-7 sm:w-7" />
+        <Icon className="h-7 w-7 text-white" />
       </motion.div>
-      <div className="relative z-10 mt-1 flex flex-1 flex-col">
-        <h3 className="text-xl font-bold tracking-tight text-[#083157] transition-colors duration-300 sm:text-2xl">
-          {title}
-        </h3>
-        <p className="mt-4 flex-1 text-base leading-relaxed text-black/80 transition-[color] duration-300 group-hover:text-black sm:text-[1.0625rem] sm:leading-relaxed">
-          {description}
-        </p>
-      </div>
+
+      <h3 className="mt-8 text-2xl font-black text-[#083157]">
+        {title}
+      </h3>
+
+      <p className="mt-5 text-gray-600 leading-8">
+        {description}
+      </p>
+
+      <button className="mt-8 font-bold text-[#DE0015] transition group-hover:translate-x-2">
+        Learn More →
+      </button>
     </motion.article>
   );
 }
 
 export function ServicesSection() {
-  const reduceMotion = useReducedMotion();
-  const [a, b, c, d] = OFFERINGS;
-  const enterTrans = (i) => ({
-    duration: reduceMotion ? 0.01 : 0.58,
-    delay: reduceMotion ? 0 : i * 0.12,
-    ease: [0.22, 1, 0.36, 1],
-  });
 
-  return (
-    <section
-      id="services"
-      className="relative scroll-mt-24 bg-white py-20 text-[#083157] sm:py-24 lg:py-28"
-      aria-labelledby="services-heading"
-    >
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(249,115,22,0.06),transparent_55%)]"
-        aria-hidden
+const reduceMotion = useReducedMotion();
+
+const [a,b,c,d]=OFFERINGS;
+
+const enter=(i)=>({
+duration:.6,
+delay:i*.12,
+ease:[0.22,1,0.36,1]
+});
+
+return(
+
+<section
+id="services"
+className="relative bg-white py-24 lg:py-32"
+>
+
+<div className="mx-auto max-w-7xl px-6 lg:px-10">
+
+<div className="grid lg:grid-cols-12 gap-16 items-center">
+
+<div className="lg:col-span-5">
+
+<p className="flex items-center gap-2 font-bold uppercase tracking-[.25em] text-[#083157] text-sm">
+
+<IconHome className="h-5 w-5 font-bold"/>
+
+SERVICES WE OFFER
+
+</p>
+
+<h2 className="mt-5 text-4xl font-black leading-tight text-[#083157] lg:text-5xl">
+
+Solutions Every Business Needs
+
+</h2>
+
+<p className="mt-7 max-w-xl text-lg leading-9 text-gray-600 font-bold">
+
+Digital Drifters delivers premium business services including software development, marketplace management, operational excellence, and customer support—designed to help businesses grow with confidence.
+
+</p>
+
+<Link
+href="#contact"
+className="mt-10 inline-flex rounded-xl bg-[#DE0015] px-9 py-4 font-bold text-white transition hover:scale-105 hover:bg-red-700"
+>
+
+Explore Services
+
+</Link>
+
+</div>
+{/* Right Side */}
+
+<div className="lg:col-span-7">
+
+  <div className="grid gap-8 md:grid-cols-2">
+
+    {/* Column 1 */}
+    <div className="flex flex-col gap-8">
+
+      <ServiceCard
+        {...a}
+        transition={enter(0)}
+        reduceMotion={reduceMotion}
       />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-[#083157]/40 to-transparent"
-        aria-hidden
+
+      <ServiceCard
+        {...c}
+        transition={enter(2)}
+        reduceMotion={reduceMotion}
       />
 
-      <div className="relative mx-auto w-full max-w-[min(100%,1600px)] px-5 sm:px-8 lg:px-10 xl:px-14">
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-12 lg:items-start">
-          <div className="lg:col-span-5">
-            <motion.div
-              initial={
-                reduceMotion ? false : { opacity: 0, y: 28, x: -12 }
-              }
-              whileInView={{ opacity: 1, y: 0, x: 0 }}
-              viewport={{ once: true, margin: "-80px", amount: 0.25 }}
-              transition={{
-                duration: reduceMotion ? 0.01 : 0.65,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.22em] text-[#083157] sm:text-sm sm:tracking-[0.26em]">
-                <IconHome className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
-                Services we offer
-              </p>
-              <h2
-                id="services-heading"
-                className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-[#083157] sm:text-5xl sm:leading-[1.08] lg:text-[3.15rem] lg:leading-[1.06]"
-              >
-                Solutions every business needs
-              </h2>
-              <p className="mt-6 max-w-lg text-base leading-relaxed text-black sm:text-lg sm:leading-relaxed">
-                Digital Drifters helps teams run operations, ship custom software,
-                grow on eBay and Amazon, and run call-center support—practical
-                partnerships for businesses that want momentum without noise. We
-                also support adjacent ventures when the fit is right.
-              </p>
+    </div>
 
-              <Link
-                href="#contact"
-                className="mt-10 inline-flex items-center justify-center rounded-lg bg-red-600 px-9 py-4 text-sm font-bold text-white transition-all duration-300 hover:bg-red-700 hover:shadow-lg"
-              >
-                More Services
-              </Link>
-            </motion.div>
-          </div>
+    {/* Column 2 */}
+    <div className="mt-12 flex flex-col gap-8">
 
-          <div className="lg:col-span-7">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7">
-              <div className="flex flex-col gap-6 sm:gap-7">
-                <ServiceCard {...a} transition={enterTrans(0)} reduceMotion={reduceMotion} />
-                <ServiceCard {...c} transition={enterTrans(2)} reduceMotion={reduceMotion} />
-              </div>
-              <div className="flex flex-col gap-6 sm:gap-7 sm:translate-y-10 lg:translate-y-12">
-                <ServiceCard {...b} transition={enterTrans(1)} reduceMotion={reduceMotion} />
-                <ServiceCard {...d} transition={enterTrans(3)} reduceMotion={reduceMotion} />
-              </div>
-            </div>
-          </div>
+      <ServiceCard
+        {...b}
+        transition={enter(1)}
+        reduceMotion={reduceMotion}
+      />
+
+      <ServiceCard
+        {...d}
+        transition={enter(3)}
+        reduceMotion={reduceMotion}
+      />
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+{/* Bottom Premium Banner */}
+
+<motion.div
+  initial={
+    reduceMotion
+      ? false
+      : {
+          opacity: 0,
+          y: 30,
+        }
+  }
+  whileInView={{
+    opacity: 1,
+    y: 0,
+  }}
+  viewport={{
+    once: true,
+  }}
+  transition={{
+    duration: 0.6,
+  }}
+  className="
+   mt-24
+   overflow-hidden
+  rounded-[34px]
+  border
+border-gray-200
+bg-white
+  p-10
+  shadow-[0_25px_70px_rgba(15,23,42,.08)]
+  "
+>
+
+  <div className="grid items-center gap-10 lg:grid-cols-2">
+
+    <div>
+
+      <p className="text-sm font-bold uppercase tracking-[0.25em] text-[#DE0015]">
+        WHY DIGITAL DRIFTERS
+      </p>
+
+      <h3 className="mt-4 text-4xl font-black leading-tight text-[#083157]">
+        Everything your business needs in one trusted partner.
+      </h3>
+
+      <p className="mt-6 max-w-xl text-lg leading-8 text-gray-600">
+        From software development and operations management to
+        eCommerce growth and customer support, we help businesses
+        streamline operations, improve efficiency, and accelerate
+        long-term growth with reliable digital solutions.
+      </p>
+
+    </div>
+
+    <div className="grid grid-cols-2 gap-6">
+
+      {[
+        "Custom Software",
+        "Business Operations",
+        "Amazon & eBay",
+        "24/7 Support",
+      ].map((item) => (
+
+        <div
+          key={item}
+          className="
+          rounded-2xl
+          border
+        border-gray-200
+        bg-white
+          p-6
+          text-center
+          shadow-sm
+          transition
+         duration-300
+        hover:-translate-y-2
+       hover:border-[#DE0015]
+        hover:shadow-xl
+        "
+        >
+
+          <div className="mx-auto mb-4 h-3 w-3 rounded-full bg-[#DE0015]" />
+
+          <h4 className="font-bold text-[#083157]">
+            {item}
+          </h4>
+
         </div>
-      </div>
-    </section>
-  );
+
+      ))}
+
+    </div>
+
+  </div>
+
+</motion.div>
+
+</div>
+
+</section>
+
+);
 }

@@ -38,7 +38,7 @@ const PROJECTS = [
       "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?auto=format&fit=crop&w=1600&q=80",
     tags: ["Domain Marketplace", "Web Services", "Digital Solutions"],
     description:
-      "A professional domain marketplace platform designed to help users explore, manage, and acquire premium domain names with a smooth browsing experience and modern web features."
+      "A professional domain marketplace platform designed to help users explore, manage, and acquire premium domain names with a smooth browsing experience and modern web features.",
   },
   {
     name: "Verified CRM",
@@ -49,7 +49,7 @@ const PROJECTS = [
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
     tags: ["CRM", "Business Automation", "SaaS Platform"],
     description:
-      "A powerful CRM platform designed to help businesses manage customer relationships, streamline workflows, track performance, and improve operations through a centralized dashboard."
+      "A powerful CRM platform designed to help businesses manage customer relationships, streamline workflows, track performance, and improve operations through a centralized dashboard.",
   },
   {
     name: "CashlyCards.com",
@@ -58,7 +58,7 @@ const PROJECTS = [
       "https://images.unsplash.com/photo-1685483749753-0dab7e144794?auto=format&fit=crop&w=1600&q=80",
     tags: ["eCommerce", "Online Marketplace", "Shopping Platform"],
     description:
-      "A modern eCommerce platform designed to provide seamless online shopping experiences with efficient product management, secure transactions, and smooth order processing capabilities."
+      "A modern eCommerce platform designed to provide seamless online shopping experiences with efficient product management, secure transactions, and smooth order processing capabilities.",
   },
   {
     name: "LogicalCRM.com",
@@ -67,9 +67,13 @@ const PROJECTS = [
       "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80",
     tags: ["CRM", "Business Management", "SaaS Platform"],
     description:
-      "A smart CRM platform designed to help businesses manage customer relationships, automate workflows, track sales activities, and improve productivity through a centralized system."
+      "A smart CRM platform designed to help businesses manage customer relationships, automate workflows, track sales activities, and improve productivity through a centralized system.",
   },
 ];
+
+/* ------------------------------------------------------------------ */
+/* Icons                                                                */
+/* ------------------------------------------------------------------ */
 
 function IconBriefcase({ className }) {
   return (
@@ -86,33 +90,41 @@ function IconBriefcase({ className }) {
   );
 }
 
-function IconExternal({ className }) {
+/* Simple right arrow — matches the circular "view case study" button */
+function IconArrowRight({ className }) {
   return (
     <svg
       className={className}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.75"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       aria-hidden
     >
-      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
+      <path d="M5 12h14M13 6l6 6-6 6" />
     </svg>
   );
 }
+
+/* ------------------------------------------------------------------ */
+/* Card image with graceful fallback                                   */
+/* ------------------------------------------------------------------ */
 
 function ProjectCardImage({ name, image, imageFallback }) {
   const [src, setSrc] = useState(image);
   const [failed, setFailed] = useState(false);
 
   if (failed) {
-    const initial = name.replace(/[^a-zA-Z0-9]/g, "").slice(0, 2).toUpperCase() || "DD";
+    const initial =
+      name.replace(/[^a-zA-Z0-9]/g, "").slice(0, 2).toUpperCase() || "DD";
     return (
       <div
-        className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-red-500/15 via-white to-white"
+        className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-[#0B1D3A] via-[#0B1D3A] to-[#132a52]"
         aria-hidden
       >
-        <span className="text-5xl font-black tracking-tighter text-[#0B1D3A]/80 sm:text-6xl">
+        <span className="text-5xl font-black tracking-tighter text-white/70 sm:text-6xl">
           {initial}
         </span>
       </div>
@@ -124,7 +136,8 @@ function ProjectCardImage({ name, image, imageFallback }) {
       src={src}
       alt={`${name} project preview`}
       fill
-      className="object-cover transition duration-500 group-hover:scale-[1.04] group-hover:opacity-90"
+      priority={false}
+      className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
       sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
       onError={() => {
         if (imageFallback && src !== imageFallback) {
@@ -137,101 +150,108 @@ function ProjectCardImage({ name, image, imageFallback }) {
   );
 }
 
+/* ------------------------------------------------------------------ */
+/* Card — full-bleed image, content overlaid, Webstacks-style layout   */
+/* ------------------------------------------------------------------ */
+
 function ProjectCard({ project, index, reduceMotion }) {
   const transition = {
-    duration: reduceMotion ? 0.01 : 0.5,
-    delay: reduceMotion ? 0 : index * 0.08,
+    duration: reduceMotion ? 0.01 : 0.6,
+    delay: reduceMotion ? 0 : index * 0.09,
     ease: [0.22, 1, 0.36, 1],
   };
 
   const hoverMotion = reduceMotion
     ? {}
-    : {
-        y: -6,
-        transition: { type: "spring", stiffness: 420, damping: 28 },
-      };
+    : { y: -8, transition: { type: "spring", stiffness: 320, damping: 26 } };
 
   return (
     <motion.article
-      initial={
-        reduceMotion
-          ? { opacity: 1, y: 0 }
-          : { opacity: 0, y: 28, scale: 0.98 }
-      }
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
       whileHover={hoverMotion}
       viewport={{ once: true, margin: "-50px", amount: 0.15 }}
       transition={transition}
-      className={`group flex h-full flex-col overflow-hidden rounded-2xl border bg-white shadow-[0_10px_30px_-14px_rgba(15,23,42,0.18)] transition-[border-color,box-shadow] duration-300 hover:shadow-[0_16px_40px_-12px_rgba(225,14,29,0.25)] ${
-        project.aiPowered
-          ? "border-red-500/45 hover:border-red-500"
-          : "border-slate-200 hover:border-red-500/40"
-      }`}
+      className="group relative isolate flex h-[420px] w-full flex-col justify-between overflow-hidden rounded-[20px] shadow-[0_10px_30px_-14px_rgba(11,29,58,0.25)] transition-shadow duration-500 ease-out hover:shadow-[0_24px_55px_-14px_rgba(11,29,58,0.45)] focus-within:ring-2 focus-within:ring-[#E10E1D] focus-within:ring-offset-2 sm:aspect-[460/500] sm:h-auto lg:mx-auto lg:aspect-auto lg:h-[500px] lg:w-[460px]"
     >
-      <Link
-        href={project.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative block aspect-[16/10] overflow-hidden"
-      >
-        {project.aiPowered ? (
-          <span
-            style={{ backgroundColor: RED }}
-            className="absolute left-3 top-3 z-10 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg"
-          >
-            AI-powered
-          </span>
-        ) : null}
+      {/* Full-bleed background image */}
+      <div className="absolute inset-0 h-full w-full overflow-hidden rounded-[20px]">
         <ProjectCardImage
           name={project.name}
           image={project.image}
           imageFallback={project.imageFallback}
         />
+        {/* Top gradient — keeps title/badge legible over bright images */}
         <div
-          className="absolute inset-0 bg-linear-to-t from-black/70 via-black/25 to-transparent"
+          className="absolute inset-x-0 top-0 h-2/3 bg-linear-to-b from-[#0B1D3A]/85 via-[#0B1D3A]/25 to-transparent"
           aria-hidden
         />
-        <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full border border-white/40 bg-black/60 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </Link>
+        {/* Bottom gradient — keeps the CASE STUDY / arrow controls legible */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-[#0B1D3A]/80 via-[#0B1D3A]/10 to-transparent"
+          aria-hidden
+        />
+      </div>
 
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className={`text-lg font-bold tracking-tight ${NAVY} transition-colors group-hover:text-red-600 sm:text-xl`}>
+      {/* AI-powered badge */}
+      {project.aiPowered && (
+        <span
+          style={{ backgroundColor: RED }}
+          className="absolute right-5 top-5 z-10 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg"
+        >
+          AI-powered
+        </span>
+      )}
+
+      {/* Top-left: name, category/tags, Case Study button */}
+      <div className="relative z-10 flex flex-col gap-3 p-7">
+        <div>
+          <h3 className="text-2xl font-bold leading-tight tracking-tight text-white sm:text-[1.75rem]">
             {project.name}
           </h3>
-          <span
-            style={{ borderColor: `${RED}66` }}
-            className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-red-600 transition group-hover:bg-[#E10E1D] group-hover:text-white group-hover:border-[#E10E1D]"
-          >
-            <IconExternal className="h-3.5 w-3.5" />
-          </span>
+          <p className="mt-1.5 text-sm font-medium text-white/75">
+            {project.tags.join(", ")}
+          </p>
         </div>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-700 sm:text-base">
-          {project.description}
-        </p>
+
         <Link
           href={project.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-sm transition hover:brightness-110"
-          style={{ backgroundColor: RED }}
+          className="inline-flex w-fit items-center rounded-full border border-white/70 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:border-[#E10E1D] hover:bg-[#E10E1D]"
         >
-          View project
-          <IconExternal className="h-3.5 w-3.5" />
+          Case Study
+        </Link>
+      </div>
+
+      {/* Description — revealed on hover, sits above the footer controls */}
+      <div className="relative z-10 px-7">
+        <p className="max-h-0 overflow-hidden text-sm leading-relaxed text-white/85 opacity-0 transition-all duration-500 ease-out group-hover:max-h-28 group-hover:opacity-100">
+          {project.description}
+        </p>
+      </div>
+
+      <div className="relative z-10 flex-1" />
+
+      {/* Bottom-right circular arrow button */}
+      <div className="relative z-10 flex items-center justify-end p-6">
+        <Link
+          href={project.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${project.name} case study`}
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-[#0B1D3A] shadow-md transition-colors duration-300 group-hover:bg-[#E10E1D] group-hover:text-white"
+        >
+          <IconArrowRight className="h-4.5 w-4.5 transition-transform duration-300 group-hover:translate-x-0.5" />
         </Link>
       </div>
     </motion.article>
   );
 }
+
+/* ------------------------------------------------------------------ */
+/* Section                                                              */
+/* ------------------------------------------------------------------ */
 
 export function ProjectsSection() {
   const reduceMotion = useReducedMotion();
@@ -246,7 +266,10 @@ export function ProjectsSection() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_45%_at_50%_0%,rgba(225,14,29,0.06),transparent_55%)]"
         aria-hidden
       />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-red-500/30 to-transparent" aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-red-500/30 to-transparent"
+        aria-hidden
+      />
 
       <div className="relative mx-auto w-full max-w-[min(100%,1600px)] px-5 sm:px-8 lg:px-10 xl:px-14">
         <motion.header
@@ -280,7 +303,7 @@ export function ProjectsSection() {
           </Link>
         </motion.header>
 
-        <div className="mt-14 grid grid-cols-1 gap-7 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:mx-auto lg:max-w-[1436px] lg:grid-cols-3">
           {PROJECTS.map((project, index) => (
             <ProjectCard
               key={project.href}

@@ -156,23 +156,23 @@ export function AiIntegrationSection() {
 
       <div className="relative mx-auto w-full max-w-[min(100%,1600px)] px-5 sm:px-8 lg:px-10 xl:px-14">
         <motion.header
-          className="mx-auto max-w-4xl text-center"
+          className="mx-auto max-w-5xl text-center relative space-y-8"
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.55 }}
         >
-          <p className="inline-flex items-center gap-2 rounded-full border border-orange-500/50 bg-orange-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-orange-600 sm:text-sm">
-            <IconSpark className="h-4 w-4" />
+          <p className="inline-flex items-center gap-2 rounded-full border border-orange-400/40 bg-gradient-to-r from-orange-100 via-white to-red-100 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-orange-700 shadow-lg backdrop-blur-md">
+            <IconSpark className="h-2 w-4" />
             AI integration — highlighted
           </p>
           <h2
             id="ai-heading"
-            className={`mt-5 text-3xl font-bold leading-[1.1] tracking-tight ${NAVY} sm:text-4xl lg:text-[2.85rem]`}
+            className={`"mt-4 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-5xl`}
           >
             Intelligence built into everything we deliver
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-black sm:text-lg">
+          <p className="mx-auto mt-4 max-w-3xl text-lg leading-9 text-slate-600 sm:text-xl">
             Digital Drifters does not bolt AI on at the end—we design chatbots, call
             bots, and knowledge-driven assistants into the software, social, and
             operations work we already run for clients. Your audience gets fast,
@@ -181,23 +181,23 @@ export function AiIntegrationSection() {
         </motion.header>
 
         <motion.div
-          className="mx-auto mt-10 max-w-3xl rounded-2xl border-2 border-orange-500/60 bg-linear-to-br from-orange-500/10 via-white to-white px-6 py-5 text-center shadow-[0_0_36px_-14px_rgba(249,115,22,0.3)] sm:px-8"
+          className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-[32px] border border-orange-300/40 bg-white/90 px-8 py-8 text-center shadow-[0_30px_80px_rgba(0,0,0,0.08)] backdrop-blur-xl sm:px-12"
           initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
         >
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#083157]sm:text-base">
+          <p className="inline-flex items-center rounded-full border border-orange-300 bg-gradient-to-r from-orange-50 to-white px-5 py-2 text-xs font-bold uppercase tracking-[0.3em] text-orange-600 shadow-md sm:text-sm">
             What we provide through AI
           </p>
-          <p className="mt-3 text-sm leading-relaxed text-black sm:text-base">
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
             Auto-replies on digital channels, automated call handling on the phone,
             and reliable answers pulled from your company&apos;s own information—one
             partner for integration, training, monitoring, and improvement.
           </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:items-stretch lg:gap-8">
+        <div className="mx-auto mt-20 max-w-7xl grid gap-8 md:grid-cols-2 xl:grid-cols-3 xl:gap-10">
           {AI_CAPABILITIES.map((item, index) => (
             <CapabilityCard
               key={item.id}
@@ -209,7 +209,7 @@ export function AiIntegrationSection() {
         </div>
 
         <motion.div
-          className="mt-14 rounded-2xl border border-orange-500/30 bg-white p-6 shadow-sm sm:p-8"
+          className="relative mt-20 overflow-hidden rounded-[32px] border border-orange-200/60 bg-white/90 backdrop-blur-xl p-8 shadow-[0_35px_90px_rgba(0,0,0,0.1)] sm:p-10"
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -218,7 +218,7 @@ export function AiIntegrationSection() {
           <h3 className={`text-center text-lg font-bold ${NAVY} sm:text-xl`}>
             Live in our product stack
           </h3>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <div className="mx-auto mt-10 grid max-w-6xl gap-8 md:grid-cols-2 xl:gap-10">
             {AI_PRODUCTS.map((product) => (
               <Link
                 key={product.href}
@@ -257,11 +257,11 @@ export function AiIntegrationSection() {
           <p className="text-center text-xs font-bold uppercase tracking-[0.22em] text-[#083157] sm:text-sm">
             How it works end-to-end
           </p>
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+          <div className="mx-auto mt-12 grid max-w-7xl gap-8 md:grid-cols-2 xl:grid-cols-4 xl:gap-10">
             {INTEGRATION_STEPS.map((step, i) => (
               <div
                 key={step.label}
-                className="relative rounded-xl border border-[#DE0015] bg-white px-3 py-4 text-center shadow-sm sm:px-4"
+                className="group relative overflow-hidden rounded-3xl border border-orange-200/60 bg-white/90 p-6 text-center backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-3 hover:border-orange-500 hover:shadow-[0_30px_80px_rgba(249,115,22,0.25)]"
               >
                 <span className="text-[10px] font-black text-black sm:text-xs">
                   {String(i + 1).padStart(2, "0")}
@@ -277,7 +277,7 @@ export function AiIntegrationSection() {
           </div>
         </motion.div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+        <div className="mt-20 mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-4">
           {[
             "Website chat widgets",
             "WhatsApp auto-reply",
@@ -287,7 +287,24 @@ export function AiIntegrationSection() {
           ].map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-[#DE0015] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white sm:text-[11px]"
+              className="rounded-full
+              border border-orange-200
+             bg-white 
+              px-6 py-3
+              text-sm
+font-semibold
+tracking-wide
+text-slate-700
+shadow-md
+transition-all
+duration-300
+hover:-translate-y-1
+hover:border-orange-500
+hover:bg-gradient-to-r
+hover:from-orange-500
+hover:to-red-500
+hover:text-white
+hover:shadow-xl"
             >
               {tag}
             </span>
