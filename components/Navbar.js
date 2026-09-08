@@ -46,16 +46,15 @@ function BrandLogo({ onNavigate, compact = false }) {
       aria-label="Digital Drifters — home"
     >
       <span
-        className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#FAF8F3] ring-1 ring-[#0B1F4E]/12 transition duration-300 group-hover:ring-[#C67D4D]/45 group-hover:shadow-[0_0_22px_-4px_rgba(198,125,77,0.5)] group-focus-visible:ring-2 group-focus-visible:ring-[#0B1F4E]/40 ${
-          compact ? "h-10 w-10" : "h-11 w-11 sm:h-12 sm:w-12"
-        }`}
+        className={`relative flex shrink-0 items-center justify-center overflow-hidden  ring-[#0B1F4E]/12 transition duration-300 group-hover:ring-[#C67D4D]/45 group-hover:shadow-[0_0_22px_-4px_rgba(198,125,77,0.5)] group-focus-visible:ring-2 group-focus-visible:ring-[#0B1F4E]/40 ${compact ? "h-10 w-10" : "h-11 w-11 sm:h-12 sm:w-12"
+          }`}
       >
         <Image
-          src="/2.png"
+          src="/22.png"
           alt=""
-          width={160}
-          height={160}
-          className="h-[190%] w-[190%] max-w-none object-cover object-center transition duration-500 ease-out group-hover:scale-[1.06]"
+          width={60}
+          height={60}
+          className="h-[80%] w-[80%] max-w-none object-cover object-center transition duration-500 ease-out group-hover:scale-[1.06]"
           priority
         />
         <span
