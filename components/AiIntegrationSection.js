@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 
+const NAVY = "text-black";
+const NAVY_BG = "bg-[#0B1D3A]";
+
 const AI_CAPABILITIES = [
   {
     id: "chat",
@@ -108,26 +111,26 @@ function CapabilityCard({ item, index, reduceMotion }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5, delay: reduceMotion ? 0 : index * 0.08 }}
-      className={`relative flex flex-col rounded-2xl border bg-black p-6 sm:p-7 ${
+      className={`relative flex flex-col rounded-2xl border bg-white p-6 shadow-sm sm:p-7 ${
         isCenter
-          ? "border-orange-500 shadow-[0_0_48px_-8px_rgba(249,115,22,0.5)] lg:-mt-2 lg:scale-[1.02]"
+          ? "border-orange-500 shadow-[0_0_36px_-10px_rgba(249,115,22,0.35)] lg:-mt-2 lg:scale-[1.02]"
           : "border-orange-500/30"
       }`}
     >
       {isCenter ? (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-orange-500 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-black">
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-red-600 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
           Flagship
         </span>
       ) : null}
-      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500 text-black">
+      <span className={`flex h-12 w-12 items-center justify-center rounded-xl ${NAVY_BG} text-white`}>
         <item.Icon className="h-6 w-6" />
       </span>
-      <h3 className="mt-5 text-lg font-bold text-white sm:text-xl">{item.title}</h3>
-      <p className="mt-3 text-sm leading-relaxed text-white/80 sm:text-base">{item.description}</p>
+      <h3 className={`mt-5 text-lg font-bold ${NAVY} sm:text-xl`}>{item.title}</h3>
+      <p className="mt-3 text-sm leading-relaxed text-black sm:text-base">{item.description}</p>
       <ul className="mt-5 flex flex-col gap-2.5">
         {item.points.map((point) => (
-          <li key={point} className="flex gap-2 text-sm text-white/75">
-            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-orange-500" aria-hidden />
+          <li key={point} className="flex gap-2 text-sm text-black">
+            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-600" aria-hidden />
             {point}
           </li>
         ))}
@@ -142,34 +145,34 @@ export function AiIntegrationSection() {
   return (
     <section
       id="ai"
-      className="relative scroll-mt-24 overflow-hidden bg-black py-20 text-white sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 overflow-hidden bg-white py-20 text-black sm:py-24 lg:py-28"
       aria-labelledby="ai-heading"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_50%,rgba(249,115,22,0.16),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_50%,rgba(249,115,22,0.08),transparent_60%)]"
         aria-hidden
       />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-orange-500/50 to-transparent" aria-hidden />
 
       <div className="relative mx-auto w-full max-w-[min(100%,1600px)] px-5 sm:px-8 lg:px-10 xl:px-14">
         <motion.header
-          className="mx-auto max-w-4xl text-center"
+          className="mx-auto max-w-5xl text-center relative space-y-8"
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.55 }}
         >
-          <p className="inline-flex items-center gap-2 rounded-full border border-orange-500/50 bg-orange-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-orange-500 sm:text-sm">
-            <IconSpark className="h-4 w-4" />
+          <p className="inline-flex items-center gap-2 rounded-full border border-orange-400/40 bg-gradient-to-r from-orange-100 via-white to-red-100 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-orange-700 shadow-lg backdrop-blur-md">
+            <IconSpark className="h-2 w-4" />
             AI integration — highlighted
           </p>
           <h2
             id="ai-heading"
-            className="mt-5 text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-[2.85rem]"
+            className={`"mt-4 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-5xl`}
           >
             Intelligence built into everything we deliver
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">
+          <p className="mx-auto mt-4 max-w-3xl text-lg leading-9 text-slate-600 sm:text-xl">
             Digital Drifters does not bolt AI on at the end—we design chatbots, call
             bots, and knowledge-driven assistants into the software, social, and
             operations work we already run for clients. Your audience gets fast,
@@ -178,23 +181,23 @@ export function AiIntegrationSection() {
         </motion.header>
 
         <motion.div
-          className="mx-auto mt-10 max-w-3xl rounded-2xl border-2 border-orange-500/60 bg-linear-to-br from-orange-500/10 via-black to-black px-6 py-5 text-center shadow-[0_0_56px_-12px_rgba(249,115,22,0.45)] sm:px-8"
+          className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-[32px] border border-orange-300/40 bg-white/90 px-8 py-8 text-center shadow-[0_30px_80px_rgba(0,0,0,0.08)] backdrop-blur-xl sm:px-12"
           initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
         >
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-500 sm:text-base">
+          <p className="inline-flex items-center rounded-full border border-orange-300 bg-gradient-to-r from-orange-50 to-white px-5 py-2 text-xs font-bold uppercase tracking-[0.3em] text-orange-600 shadow-md sm:text-sm">
             What we provide through AI
           </p>
-          <p className="mt-3 text-sm leading-relaxed text-white/85 sm:text-base">
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
             Auto-replies on digital channels, automated call handling on the phone,
             and reliable answers pulled from your company&apos;s own information—one
             partner for integration, training, monitoring, and improvement.
           </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:items-stretch lg:gap-8">
+        <div className="mx-auto mt-20 max-w-7xl grid gap-8 md:grid-cols-2 xl:grid-cols-3 xl:gap-10">
           {AI_CAPABILITIES.map((item, index) => (
             <CapabilityCard
               key={item.id}
@@ -206,38 +209,38 @@ export function AiIntegrationSection() {
         </div>
 
         <motion.div
-          className="mt-14 rounded-2xl border border-orange-500/30 bg-black p-6 sm:p-8"
+          className="relative mt-20 overflow-hidden rounded-[32px] border border-orange-200/60 bg-white/90 backdrop-blur-xl p-8 shadow-[0_35px_90px_rgba(0,0,0,0.1)] sm:p-10"
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h3 className="text-center text-lg font-bold text-white sm:text-xl">
+          <h3 className={`text-center text-lg font-bold ${NAVY} sm:text-xl`}>
             Live in our product stack
           </h3>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <div className="mx-auto mt-10 grid max-w-6xl gap-8 md:grid-cols-2 xl:gap-10">
             {AI_PRODUCTS.map((product) => (
               <Link
                 key={product.href}
                 href={product.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col rounded-xl border border-orange-500/25 bg-orange-500/5 px-5 py-4 transition hover:border-orange-500 hover:bg-orange-500/10"
+                className="group flex flex-col rounded-xl border border-orange-500/25 bg-orange-50/40 px-5 py-4 transition hover:border-orange-500 hover:bg-orange-50"
               >
-                <span className="text-lg font-bold text-white group-hover:text-orange-500">
+                <span className={`text-lg font-bold ${NAVY} group-hover:text-red-600`}>
                   {product.name}
                 </span>
-                <span className="mt-1 text-sm text-white/70">{product.blurb}</span>
-                <span className="mt-3 text-xs font-bold uppercase tracking-wider text-orange-500">
+                <span className="mt-1 text-sm text-slate-600">{product.blurb}</span>
+                <span className="mt-3 inline-flex w-fit items-center rounded-full bg-red-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white transition group-hover:bg-orange-600">
                   View project →
                 </span>
               </Link>
             ))}
           </div>
-          <p className="mt-6 text-center text-sm text-white/60">
+          <p className="mt-6 text-center text-sm text-slate-500">
             We also embed the same AI patterns into custom builds, CRM flows, and
             social inbox automation—see{" "}
-            <Link href="#work" className="font-semibold text-orange-500 hover:text-white">
+            <Link href="#work" className="font-semibold text-[#083157] hover:text-[#0B1D3A]">
               all projects
             </Link>
             .
@@ -251,22 +254,22 @@ export function AiIntegrationSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
         >
-          <p className="text-center text-xs font-bold uppercase tracking-[0.22em] text-orange-500 sm:text-sm">
+          <p className="text-center text-xs font-bold uppercase tracking-[0.22em] text-[#083157] sm:text-sm">
             How it works end-to-end
           </p>
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+          <div className="mx-auto mt-12 grid max-w-7xl gap-8 md:grid-cols-2 xl:grid-cols-4 xl:gap-10">
             {INTEGRATION_STEPS.map((step, i) => (
               <div
                 key={step.label}
-                className="relative rounded-xl border border-orange-500/20 bg-black px-3 py-4 text-center sm:px-4"
+                className="group relative overflow-hidden rounded-3xl border border-orange-200/60 bg-white/90 p-6 text-center backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-3 hover:border-orange-500 hover:shadow-[0_30px_80px_rgba(249,115,22,0.25)]"
               >
-                <span className="text-[10px] font-black text-orange-500/80 sm:text-xs">
+                <span className="text-[10px] font-black text-black sm:text-xs">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="mt-2 text-xs font-bold leading-snug text-white sm:text-sm">
+                <p className={`mt-2 text-xs font-bold leading-snug ${NAVY} sm:text-sm`}>
                   {step.label}
                 </p>
-                <p className="mt-1 text-[10px] leading-relaxed text-white/65 sm:text-xs">
+                <p className="mt-1 text-[10px] leading-relaxed text-black sm:text-xs">
                   {step.detail}
                 </p>
               </div>
@@ -274,7 +277,7 @@ export function AiIntegrationSection() {
           </div>
         </motion.div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+        <div className="mt-20 mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-4">
           {[
             "Website chat widgets",
             "WhatsApp auto-reply",
@@ -284,7 +287,24 @@ export function AiIntegrationSection() {
           ].map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-orange-500/35 bg-orange-500/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-orange-500 sm:text-[11px]"
+              className="rounded-full
+              border border-orange-200
+             bg-white 
+              px-6 py-3
+              text-sm
+font-semibold
+tracking-wide
+text-slate-700
+shadow-md
+transition-all
+duration-300
+hover:-translate-y-1
+hover:border-orange-500
+hover:bg-gradient-to-r
+hover:from-orange-500
+hover:to-red-500
+hover:text-white
+hover:shadow-xl"
             >
               {tag}
             </span>

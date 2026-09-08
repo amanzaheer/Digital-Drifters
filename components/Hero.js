@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useState, useEffect, useRef, useCallback } from "react";
 
-const HERO_BANNER_SRC = "/moon1.png";
+const HERO_BANNER_SRC = "/3.png";
 
 const SERVICES = [
   "Operation management",
@@ -23,83 +23,9 @@ const HOLD_TICKS_REDUCED = Math.ceil(2800 / TICK_MS_REDUCED);
 const GAP_TICKS = Math.ceil(450 / TICK_MS);
 const GAP_TICKS_REDUCED = Math.ceil(550 / TICK_MS_REDUCED);
 
-/** Many small stars in the right strip only (deterministic layout). */
-function buildHeroStars() {
-  const out = [];
-  for (let i = 0; i < 48; i += 1) {
-    const row = Math.floor(i / 6);
-    const col = i % 6;
-    const topBase = 6 + row * 11.5 + (col % 2) * 4;
-    const leftBase = 4 + col * 15 + (row % 3) * 5;
-    out.push({
-      top: `${Math.min(90, topBase + (i % 4))}%`,
-      left: `${Math.min(92, leftBase + (i % 5))}%`,
-      size: 1 + (i % 4) * 0.45,
-      dur: 2.1 + (i % 9) * 0.32,
-      delay: ((i * 0.17) % 2.8) + (i % 3) * 0.08,
-    });
-  }
-  return out;
-}
-
-const HERO_STARS = buildHeroStars();
-
-/**
- * Smooth drift via rAF + inline transform (reliable; Framer 3D parent + CSS
- * keyframes often fail to show motion on the image in some browsers).
- */
-function HeroMoonDriftImage({ prefersReducedMotion, onLoadComplete }) {
-  const wrapRef = useRef(null);
-
-  useEffect(() => {
-    const el = wrapRef.current;
-    if (!el) return undefined;
-
-    const t0 = performance.now();
-    let rafId = 0;
-    const mild = prefersReducedMotion;
-
-    const frame = (now) => {
-      const s = (now - t0) / 1000;
-      const x =
-        Math.sin(s * (mild ? 0.22 : 0.52)) * (mild ? 6 : 22) +
-        Math.sin(s * 0.23) * (mild ? 2.5 : 10);
-      const y =
-        Math.cos(s * (mild ? 0.2 : 0.46)) * (mild ? 5 : 18) +
-        Math.cos(s * 0.2) * (mild ? 2.5 : 9);
-      el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
-      rafId = requestAnimationFrame(frame);
-    };
-
-    rafId = requestAnimationFrame(frame);
-    return () => {
-      cancelAnimationFrame(rafId);
-      el.style.transform = "translate3d(0,0,0)";
-    };
-  }, [prefersReducedMotion]);
-
-  return (
-    <div
-      ref={wrapRef}
-      className="relative h-full min-h-0 w-full will-change-transform"
-    >
-      <Image
-        src={HERO_BANNER_SRC}
-        alt="Digital Drifters — 3D visual"
-        width={1200}
-        height={1200}
-        priority
-        className="h-full w-full object-contain object-center"
-        sizes="(max-width: 1024px) 100vw, 58vw"
-        onLoadingComplete={onLoadComplete}
-      />
-    </div>
-  );
-}
-
 /** Same typography for every rotating service line */
 const serviceLineClass =
-  "text-left text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl md:text-4xl";
+  "text-left text-2xl font-semibold leading-snug tracking-tight text-[#083157] sm:text-3xl md:text-4xl";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -205,7 +131,7 @@ function HeroRotatingServices() {
       aria-live="polite"
       aria-atomic="true"
     >
-      <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-white/55">
+      <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#6b7280]">
         Our services
       </p>
       <div
@@ -215,7 +141,7 @@ function HeroRotatingServices() {
         <p className={`${serviceLineClass} inline-flex flex-wrap items-baseline gap-0`}>
           <span>{displayed}</span>
           <span
-            className="ml-0.5 inline-block h-[1em] w-[2px] shrink-0 translate-y-[0.08em] self-end rounded-[1px] bg-orange-400 align-bottom will-change-[opacity]"
+            className="ml-0.5 inline-block h-[1em] w-[2px] shrink-0 translate-y-[0.08em] self-end rounded-[1px] bg-[#073763] align-bottom will-change-[opacity]"
             style={{ opacity: caretVisible ? 1 : 0 }}
             aria-hidden
           />
@@ -226,9 +152,7 @@ function HeroRotatingServices() {
           <span
             key={line}
             className={`h-0.5 rounded-full transition-all duration-500 ${
-              i === serviceIndex
-                ? "w-8 bg-linear-to-r from-orange-500 to-amber-400"
-                : "w-1.5 bg-white/25"
+              i === serviceIndex ? "w-8 bg-[#083157]" : "w-1.5 bg-[#083157]/15"
             }`}
           />
         ))}
@@ -240,15 +164,29 @@ function HeroRotatingServices() {
 export function Hero() {
   const [bannerReady, setBannerReady] = useState(false);
   const reduceMotion = useReducedMotion();
-  const prefersReducedMotion = reduceMotion === true;
 
   return (
     <section
       id="home"
-      className="relative isolate min-h-dvh w-full scroll-mt-24 overflow-hidden bg-black text-white"
+      className="relative isolate min-h-dvh w-full scroll-mt-24 overflow-hidden bg-white text-[#083157]"
       aria-label="Hero"
     >
-      <div className="mx-auto grid min-h-dvh w-full max-w-[min(100%,1600px)] lg:grid-cols-12">
+      {/* Ambient dot-grid backdrop, contained to the copy column like the reference layout */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-0 z-0 w-full lg:w-[46%]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(8,49,87,0.14) 1.5px, transparent 1.5px)",
+          backgroundSize: "26px 26px",
+          maskImage:
+            "radial-gradient(ellipse 80% 65% at 30% 55%, black 45%, transparent 85%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 80% 65% at 30% 55%, black 45%, transparent 85%)",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto grid min-h-dvh w-full max-w-[min(100%,1600px)] lg:grid-cols-12">
         {/* Left: copy */}
         <div className="relative z-10 flex flex-col justify-center px-5 pb-32 pt-28 sm:px-8 sm:pb-28 sm:pt-32 lg:col-span-5 lg:px-10 lg:pb-24 lg:pt-28 xl:px-14">
           <motion.div
@@ -259,18 +197,18 @@ export function Hero() {
           >
             <motion.p
               variants={lineVariants}
-              className="text-[11px] font-bold uppercase tracking-[0.32em] text-white/70 sm:text-xs"
+              className="text-[11px] font-bold uppercase tracking-[0.32em] text-[#6b7280] sm:text-xs"
             >
               We are
             </motion.p>
 
             <motion.h1
               variants={lineVariants}
-              className="mt-3 font-black uppercase leading-[0.92] tracking-tighter text-white sm:mt-4  "
+              className="mt-3 font-black  leading-[0.92] tracking-tighter text-[#083157] sm:mt-4"
               style={{ fontSize: "clamp(2.25rem, 8vw, 6.75rem)" }}
             >
-              <span className="text-orange-500">Digital</span>
-              <span className="text-white"> Drifters</span>
+              <span className="text-[#083157]">Digital</span>
+              <span className="text-[#083157]"> Drifters</span>
             </motion.h1>
 
             <motion.div variants={lineVariants} className="w-full">
@@ -279,17 +217,17 @@ export function Hero() {
 
             <motion.p
               variants={lineVariants}
-              className="mt-8 max-w-md text-sm leading-relaxed text-zinc-400 sm:text-base"
-            >
-              End-to-end partners for operations, custom software, marketplace
-              growth, and customer support—built for teams that want clarity and
-              scale.
-            </motion.p>
+             className="mt-8 max-w-md text-base font-bold leading-relaxed text-[#4b5563]"
+              >
+                       End-to-end partners for operations, custom software, marketplace
+                       growth, and customer support—built for teams that want clarity and
+                       scale.
+                    </motion.p>
 
             <motion.div variants={lineVariants} className="mt-10">
               <Link
                 href="#services"
-                className="inline-flex items-center gap-3 rounded-full border border-white/90 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.22em] text-white transition hover:bg-white hover:text-black"
+                className="inline-flex items-center gap-3 rounded-full bg-red-600 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.22em] text-white shadow-[0_16px_32px_-12px_rgba(8,49,87,0.55)] transition hover:bg-[#0a3d6b] hover:shadow-[0_20px_36px_-10px_rgba(8,49,87,0.6)]"
               >
                 Discover
                 <span aria-hidden className="text-base font-normal">
@@ -300,51 +238,26 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Right: PNG banner with subtle 3D motion */}
-        <div className="relative z-0 flex min-h-[42vh] items-stretch justify-center overflow-hidden bg-black lg:col-span-7 lg:min-h-dvh">
-          <div
-            className="pointer-events-none absolute inset-0 "
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute inset-0 bg-linear-to-l from-black via-black/40 to-transparent lg:via-black/20"
-            aria-hidden
-          />
-
-          <div className="relative flex w-full flex-1 items-center justify-center px-4 pb-28 pt-8 sm:px-8 sm:pb-32 lg:px-6 lg:pb-28 lg:pt-16">
-            {/* Plain wrapper: no Framer transform on this subtree so moon drift always paints. */}
-            <div className="relative aspect-square w-full max-w-[min(100%,560px)]">
-              <div className="absolute -inset-6 rounded-4xl" aria-hidden />
-              <div
-                className={`relative z-10 flex h-full min-h-0 w-full flex-col overflow-hidden rounded-3xl transition-opacity duration-700 ${bannerReady ? "opacity-100" : "opacity-0"
-                  }`}
-              >
-                <div className="relative min-h-0 flex-1">
-                  <HeroMoonDriftImage
-                    prefersReducedMotion={prefersReducedMotion}
-                    onLoadComplete={() => setBannerReady(true)}
-                  />
-                </div>
-
-                {/* Stars only on the right side of the frame (beside / around moon edge). */}
+        {/* Right: device showcase banner, framed in a soft card like the reference */}
+        <div className="relative z-0 flex min-h-[42vh] items-stretch justify-center overflow-hidden bg-white lg:col-span-7 lg:min-h-dvh">
+          <div className="relative flex w-full flex-1 items-center justify-center px-4 pb-28 pt-8 sm:px-8 sm:pb-32 lg:px-10 lg:pb-28 lg:pt-16">
+            <div className="relative w-full max-w-[min(100%,760px)]">
+              <div className="rounded-[2rem] bg-[#f4f5f7] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] sm:p-10 lg:p-12">
                 <div
-                  className="pointer-events-none absolute inset-y-2 right-0 z-20 w-[56%] overflow-hidden rounded-r-3xl sm:inset-y-3"
-                  aria-hidden
+                  className={`relative overflow-hidden rounded-3xl transition-opacity duration-700 ${
+                    bannerReady ? "opacity-100" : "opacity-0"
+                  }`}
                 >
-                  {HERO_STARS.map((st, i) => (
-                    <span
-                      key={i}
-                      className="hero-star absolute rounded-full bg-white shadow-[0_0_5px_rgba(255,237,200,0.95)]"
-                      style={{
-                        top: st.top,
-                        left: st.left,
-                        width: st.size,
-                        height: st.size,
-                        ["--twinkle-dur"]: `${st.dur}s`,
-                        ["--twinkle-delay"]: `${st.delay}s`,
-                      }}
-                    />
-                  ))}
+                  <Image
+                    src={HERO_BANNER_SRC}
+                    alt="Digital Drifters — web, mobile, and platform work across devices"
+                    width={2112}
+                    height={1152}
+                    priority
+                    className="h-auto w-full object-contain object-center drop-shadow-[0_24px_48px_rgba(8,49,87,0.16)]"
+                    sizes="(max-width: 1024px) 100vw, 58vw"
+                    onLoad={() => setBannerReady(true)}
+                  />
                 </div>
               </div>
             </div>
@@ -361,7 +274,7 @@ export function Hero() {
       >
         <Link
           href="#services"
-          className="flex h-11 w-11 items-center justify-center rounded-full  bg-black/40 text-white backdrop-blur-md transition hover:border-white/60 hover:bg-white/10"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-[#083157]/15 bg-white text-[#083157] shadow-sm backdrop-blur-md transition hover:border-[#083157]/30 hover:bg-[#083157]/5"
           aria-label="Scroll to services"
         >
           <motion.span
