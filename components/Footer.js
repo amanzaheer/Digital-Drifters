@@ -174,11 +174,15 @@ export function Footer() {
             <div className="space-y-4">
               <div>
                 <p className="text-base font-semibold text-white">Digital Drifters</p>
-                <p className="mt-1 text-sm leading-relaxed text-white/85 sm:text-[15px]">
-                  Remote-first studio
+                <address className="mt-1 text-sm not-italic leading-relaxed text-white/85 sm:text-[15px]">
+                  375-377 High Street North
                   <br />
-                  United Kingdom
-                </p>
+                  London
+                  <br />
+                  England
+                  <br />
+                  E12 6PG
+                </address>
               </div>
 
               <div className="space-y-2.5 pt-1">
