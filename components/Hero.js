@@ -8,11 +8,13 @@ import { useState, useEffect, useRef, useCallback } from "react";
 const HERO_BANNER_SRC = "/3.png";
 
 const SERVICES = [
-  "Operation management",
   "Software development",
+  "SEO, AEO & GEO",
+  "Google Business Profile",
   "eCommerce — eBay & Amazon",
+  "Operation management",
+  "AI integration",
   "Call center solutions",
-  "Other businesses",
 ];
 
 /** One interval tick = one character step (typing or deleting). Hold/gap measured in ticks. */
@@ -126,7 +128,7 @@ function HeroRotatingServices() {
 
   return (
     <div
-      className="mt-8 w-full max-w-xl"
+      className="mt-6 w-full max-w-xl"
       role="status"
       aria-live="polite"
       aria-atomic="true"
@@ -168,7 +170,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate min-h-dvh w-full scroll-mt-24 overflow-hidden bg-white text-[#083157]"
+      className="relative isolate w-full scroll-mt-24 lg:min-h-dvh overflow-hidden bg-white text-[#083157]"
       aria-label="Hero"
     >
       {/* Ambient dot-grid backdrop, contained to the copy column like the reference layout */}
@@ -186,29 +188,26 @@ export function Hero() {
         }}
       />
 
-      <div className="relative z-10 mx-auto grid min-h-dvh w-full max-w-[min(100%,1600px)] lg:grid-cols-12">
+      <div className="relative z-10 mx-auto grid w-full lg:min-h-dvh max-w-[min(100%,1600px)] lg:grid-cols-12">
         {/* Left: copy */}
-        <div className="relative z-10 flex flex-col justify-center px-5 pb-32 pt-28 sm:px-8 sm:pb-28 sm:pt-32 lg:col-span-5 lg:px-10 lg:pb-24 lg:pt-28 xl:px-14">
+        <div className="relative z-10 flex flex-col justify-center px-5 pb-8 pt-28 sm:px-8 sm:pb-10 sm:pt-32 lg:col-span-5 lg:px-10 lg:pb-16 lg:pt-28 xl:px-14">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             className="flex max-w-xl flex-col items-start text-left"
           >
-            <motion.p
-              variants={lineVariants}
-              className="text-[11px] font-bold uppercase tracking-[0.32em] text-[#6b7280] sm:text-xs"
-            >
-              We are
-            </motion.p>
-
-            <motion.h1
-              variants={lineVariants}
-              className="mt-3 font-black  leading-[0.92] tracking-tighter text-[#083157] sm:mt-4"
-              style={{ fontSize: "clamp(2.25rem, 8vw, 6.75rem)" }}
-            >
-              <span className="text-[#083157]">Digital</span>
-              <span className="text-[#083157]"> Drifters</span>
+            <motion.h1 variants={lineVariants} className="text-[#083157]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#E10E1D]/20 bg-white px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[#E10E1D] shadow-sm sm:text-[11px]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#E10E1D]" aria-hidden />
+                London software, SEO &amp; eCommerce agency
+              </span>
+              <span
+                className="mt-4 block font-black leading-[0.92] tracking-tighter sm:mt-5"
+                style={{ fontSize: "clamp(2.75rem, 8vw, 6.75rem)" }}
+              >
+                Digital Drifters
+              </span>
             </motion.h1>
 
             <motion.div variants={lineVariants} className="w-full">
@@ -217,14 +216,14 @@ export function Hero() {
 
             <motion.p
               variants={lineVariants}
-             className="mt-8 max-w-md text-base font-bold leading-relaxed text-[#4b5563]"
-              >
-                       End-to-end partners for operations, custom software, marketplace
-                       growth, and customer support—built for teams that want clarity and
-                       scale.
-                    </motion.p>
+              className="mt-6 max-w-md text-base font-medium leading-relaxed text-[#4b5563]"
+            >
+              End-to-end partners for custom software, SEO &amp; AI search visibility,
+              marketplace growth, operations and customer support—serving businesses across
+              the UK, US and worldwide.
+            </motion.p>
 
-            <motion.div variants={lineVariants} className="mt-10">
+            <motion.div variants={lineVariants} className="mt-8 flex flex-wrap items-center gap-3">
               <Link
                 href="#services"
                 className="inline-flex items-center gap-3 rounded-full bg-red-600 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.22em] text-white shadow-[0_16px_32px_-12px_rgba(8,49,87,0.55)] transition hover:bg-[#0a3d6b] hover:shadow-[0_20px_36px_-10px_rgba(8,49,87,0.6)]"
@@ -234,13 +233,19 @@ export function Hero() {
                   →
                 </span>
               </Link>
+              <Link
+                href="#contact"
+                className="inline-flex items-center rounded-full border border-[#083157]/20 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.22em] text-[#083157] transition hover:border-[#083157]/40 hover:bg-[#083157]/5"
+              >
+                Free consultation
+              </Link>
             </motion.div>
           </motion.div>
         </div>
 
         {/* Right: device showcase banner, framed in a soft card like the reference */}
-        <div className="relative z-0 flex min-h-[42vh] items-stretch justify-center overflow-hidden bg-white lg:col-span-7 lg:min-h-dvh">
-          <div className="relative flex w-full flex-1 items-center justify-center px-4 pb-28 pt-8 sm:px-8 sm:pb-32 lg:px-10 lg:pb-28 lg:pt-16">
+        <div className="relative z-0 flex items-stretch justify-center overflow-hidden bg-white lg:col-span-7 lg:min-h-dvh">
+          <div className="relative flex w-full flex-1 items-center justify-center px-4 pb-12 pt-2 sm:px-8 sm:pb-14 lg:px-10 lg:pb-16 lg:pt-24">
             <div className="relative w-full max-w-[min(100%,760px)]">
               <div className="rounded-[2rem] bg-[#f4f5f7] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] sm:p-10 lg:p-12">
                 <div
@@ -267,7 +272,7 @@ export function Hero() {
 
       {/* Scroll hint — sits above fixed footer */}
       <motion.div
-        className="pointer-events-auto absolute bottom-22 right-5 z-20 sm:bottom-25 sm:right-8"
+        className="pointer-events-auto absolute bottom-8 right-8 z-20 hidden lg:block"
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.5 }}

@@ -153,7 +153,7 @@ export function ReviewsSection() {
   return (
     <section
       id="reviews"
-      className="relative scroll-mt-24 overflow-hidden bg-white py-20 text-slate-900 sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 overflow-hidden bg-white py-14 text-slate-900 sm:py-16 lg:py-20"
       aria-labelledby="reviews-heading"
     >
       <div
@@ -162,7 +162,7 @@ export function ReviewsSection() {
       />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-orange-500/35 to-transparent" aria-hidden />
 
-      <div className="relative mx-auto mb-10 w-full max-w-[min(100%,1600px)] px-5 sm:mb-12 sm:px-8 lg:px-10 xl:px-14">
+      <div className="relative mx-auto mb-8 w-full max-w-[min(100%,1600px)] px-5 sm:mb-10 sm:px-8 lg:px-10 xl:px-14">
         <motion.header
           className="mx-auto max-w-3xl text-center"
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
@@ -170,12 +170,12 @@ export function ReviewsSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-red-600 sm:text-sm sm:tracking-[0.26em]">
+          <p className="section-eyebrow">
             Client testimonials
           </p>
           <h2
             id="reviews-heading"
-            className="mt-4 text-3xl font-bold tracking-tight text-[#0B1F4E] sm:text-4xl lg:text-[2.65rem]"
+            className="mt-5 text-3xl font-black tracking-tight text-[#0B1F4E] sm:text-4xl lg:text-[2.65rem]"
           >
             Trusted for software, social &amp; operations
           </h2>

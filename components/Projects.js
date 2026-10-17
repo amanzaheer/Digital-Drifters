@@ -475,7 +475,7 @@ export default function projects() {
 
     <section
       id="projects"
-      className="relative bg-white py-20 text-black sm:py-24"
+      className="relative bg-white py-14 text-black sm:py-16"
     >
 
 

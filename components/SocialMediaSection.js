@@ -230,7 +230,7 @@ export function SocialMediaSection() {
   return (
     <section
       id="social-media"
-      className="relative scroll-mt-24 overflow-hidden bg-white py-20 text-slate-900 sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 overflow-hidden bg-white py-14 text-slate-900 sm:py-16 lg:py-20"
       aria-labelledby="social-heading"
     >
       <div
@@ -251,10 +251,7 @@ export function SocialMediaSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.55 }}
         >
-          <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.22em] text-red-600 sm:text-sm sm:tracking-[0.26em]">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-red-50 ring-1 ring-red-100 sm:h-9 sm:w-9">
-              <IconMegaphone className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
-            </span>
+          <p className="section-eyebrow">
             Social media management
           </p>
           <h2
@@ -288,7 +285,7 @@ export function SocialMediaSection() {
         </div>
 
         <motion.div
-          className="relative mt-14 overflow-hidden rounded-2xl bg-[#0B1F4E] px-5 py-7 shadow-xl shadow-[#0B1F4E]/20 sm:px-8 sm:py-8"
+          className="relative mt-10 overflow-hidden rounded-2xl bg-[#0B1F4E] px-5 py-7 shadow-xl shadow-[#0B1F4E]/20 sm:px-8 sm:py-8"
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -312,7 +309,7 @@ export function SocialMediaSection() {
           </p>
         </motion.div>
 
-        <div className="mt-16">
+        <div className="mt-12">
           <h3 className="text-center text-2xl font-black tracking-tight text-[#0B1F4E] sm:text-3xl">
             Where we show up for you
           </h3>
@@ -338,7 +335,7 @@ export function SocialMediaSection() {
           </div>
         </div>
 
-        <div className="mt-16 grid gap-10 lg:grid-cols-2 lg:gap-12">
+        <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-12">
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -442,7 +439,7 @@ export function SocialMediaSection() {
         </div>
 
         <motion.div
-          className="mt-16"
+          className="mt-12"
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -474,7 +471,7 @@ export function SocialMediaSection() {
         </motion.div>
 
         <motion.div
-          className="mt-16 flex flex-col items-center gap-6 rounded-2xl bg-[#0B1F4E] px-6 py-10 text-center shadow-xl shadow-[#0B1F4E]/20 sm:px-10"
+          className="mt-12 flex flex-col items-center gap-6 rounded-2xl bg-[#0B1F4E] px-6 py-10 text-center shadow-xl shadow-[#0B1F4E]/20 sm:px-10"
           initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

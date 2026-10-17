@@ -145,7 +145,7 @@ export function AiIntegrationSection() {
   return (
     <section
       id="ai"
-      className="relative scroll-mt-24 overflow-hidden bg-white py-20 text-black sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 overflow-hidden bg-white py-14 text-black sm:py-16 lg:py-20"
       aria-labelledby="ai-heading"
     >
       <div
@@ -156,23 +156,22 @@ export function AiIntegrationSection() {
 
       <div className="relative mx-auto w-full max-w-[min(100%,1600px)] px-5 sm:px-8 lg:px-10 xl:px-14">
         <motion.header
-          className="mx-auto max-w-5xl text-center relative space-y-8"
+          className="relative mx-auto max-w-4xl space-y-5 text-center"
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.55 }}
         >
-          <p className="inline-flex items-center gap-2 rounded-full border border-orange-400/40 bg-gradient-to-r from-orange-100 via-white to-red-100 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-orange-700 shadow-lg backdrop-blur-md">
-            <IconSpark className="h-2 w-4" />
-            AI integration — highlighted
+          <p className="section-eyebrow">
+            AI integration
           </p>
           <h2
             id="ai-heading"
-            className={`"mt-4 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-5xl`}
+            className="text-3xl font-black leading-tight tracking-tight text-[#0B1D3A] sm:text-4xl lg:text-5xl"
           >
             Intelligence built into everything we deliver
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-lg leading-9 text-slate-600 sm:text-xl">
+          <p className="mx-auto max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
             Digital Drifters does not bolt AI on at the end—we design chatbots, call
             bots, and knowledge-driven assistants into the software, social, and
             operations work we already run for clients. Your audience gets fast,
@@ -181,7 +180,7 @@ export function AiIntegrationSection() {
         </motion.header>
 
         <motion.div
-          className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-[32px] border border-orange-300/40 bg-white/90 px-8 py-8 text-center shadow-[0_30px_80px_rgba(0,0,0,0.08)] backdrop-blur-xl sm:px-12"
+          className="relative mx-auto mt-10 max-w-4xl overflow-hidden rounded-[32px] border border-orange-300/40 bg-white/90 px-8 py-8 text-center shadow-[0_30px_80px_rgba(0,0,0,0.08)] backdrop-blur-xl sm:px-12"
           initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -197,7 +196,7 @@ export function AiIntegrationSection() {
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-20 max-w-7xl grid gap-8 md:grid-cols-2 xl:grid-cols-3 xl:gap-10">
+        <div className="mx-auto mt-12 max-w-7xl grid gap-8 md:grid-cols-2 xl:grid-cols-3 xl:gap-10">
           {AI_CAPABILITIES.map((item, index) => (
             <CapabilityCard
               key={item.id}
@@ -209,7 +208,7 @@ export function AiIntegrationSection() {
         </div>
 
         <motion.div
-          className="relative mt-20 overflow-hidden rounded-[32px] border border-orange-200/60 bg-white/90 backdrop-blur-xl p-8 shadow-[0_35px_90px_rgba(0,0,0,0.1)] sm:p-10"
+          className="relative mt-12 overflow-hidden rounded-[32px] border border-orange-200/60 bg-white/90 backdrop-blur-xl p-8 shadow-[0_35px_90px_rgba(0,0,0,0.1)] sm:p-10"
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -277,7 +276,7 @@ export function AiIntegrationSection() {
           </div>
         </motion.div>
 
-        <div className="mt-20 mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-4">
+        <div className="mt-12 mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-4">
           {[
             "Website chat widgets",
             "WhatsApp auto-reply",

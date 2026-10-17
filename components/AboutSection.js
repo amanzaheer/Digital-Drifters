@@ -142,7 +142,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative scroll-mt-24 bg-slate-50 py-20 text-slate-900 sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 bg-slate-50 py-14 text-slate-900 sm:py-16 lg:py-20"
       aria-labelledby="about-heading"
     >
       <div
@@ -160,7 +160,7 @@ export function AboutSection() {
       />
 
       <div className="relative mx-auto w-full max-w-[min(100%,1600px)] px-5 sm:px-8 lg:px-10 xl:px-14">
-        <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           {/* Left: collage + experience badge */}
           <motion.div
             className="relative mx-auto w-full max-w-lg lg:mx-0 lg:max-w-none"

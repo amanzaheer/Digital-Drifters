@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SERVICES } from "@/lib/services";
 
 const PHONE_DISPLAY = "+44  7466908663 ";
 const PHONE_TEL = "+447466908663";
@@ -99,7 +100,7 @@ function IconRss({ className }) {
   );
 }
 
-function IconSearch({ className }) {
+function IconArrowUp({ className }) {
   return (
     <svg
       className={className}
@@ -109,8 +110,7 @@ function IconSearch({ className }) {
       viewBox="0 0 24 24"
       aria-hidden
     >
-      <circle cx="11" cy="11" r="7" />
-      <path d="M20 20l-3.5-3.5" />
+      <path d="M12 19V5M5 12l7-7 7 7" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -246,6 +246,29 @@ export function Footer() {
         </div>
       </div>
 
+      <nav
+        aria-label="Services"
+        className="relative mx-auto max-w-[min(100%,1600px)] border-t border-white/10 px-5 py-8 sm:px-8 lg:px-10"
+      >
+        <h2 className="mb-4 text-lg font-bold tracking-tight sm:text-xl">
+          <Link href="/services" className="transition hover:text-white/80">
+            Our Services
+          </Link>
+        </h2>
+        <ul className="grid grid-cols-1 gap-x-6 gap-y-2.5 sm:grid-cols-2 lg:grid-cols-5">
+          {SERVICES.map((s) => (
+            <li key={s.slug}>
+              <Link
+                href={`/services/${s.slug}`}
+                className="text-sm text-white/80 transition hover:text-white sm:text-[15px]"
+              >
+                {s.cardTitle}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
       <div className="relative border-t border-white/10">
         <div className="mx-auto flex max-w-[min(100%,1600px)] flex-col gap-4 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6 lg:px-10">
           <p className="text-xs text-white/70 sm:text-sm">
@@ -274,11 +297,11 @@ export function Footer() {
       </div>
 
       <a
-        href="#home"
+        href="#"
         className="absolute bottom-6 right-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#E10E1D] text-white shadow-[0_8px_24px_-4px_rgba(225,14,29,0.55)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 sm:right-8 lg:right-10"
         aria-label="Back to top"
       >
-        <IconSearch className="h-5 w-5" />
+        <IconArrowUp className="h-5 w-5" />
       </a>
     </footer>
   );

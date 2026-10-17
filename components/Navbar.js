@@ -1,20 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { CATEGORIES, SERVICES } from "@/lib/services";
+import { ServiceIcon } from "@/components/ServiceIcon";
+
+const SERVICE_GROUPS = CATEGORIES.filter((c) => c.id !== "all").map((c) => ({
+  ...c,
+  items: SERVICES.filter((s) => s.category === c.id),
+}));
 
 const navItems = [
-  { href: "#home", label: "Home" },
-  { href: "#services", label: "Services" },
-  { href: "#work", label: "Work" },
-  { href: "#projects", label: "Project" },
-  { href: "#ai", label: "AI" },
-  { href: "#social-media", label: "Social" },
-  { href: "#about", label: "About" },
-  { href: "#team", label: "Team" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#seo", label: "SEO" },
+  { href: "/#work", label: "Work" },
+  { href: "/#marketplace", label: "eCommerce" },
+  { href: "/#ai", label: "AI" },
+  { href: "/#about", label: "About" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 /** Solid red CTA to match brand button style */
@@ -37,29 +42,227 @@ function NavUnderlineLink({ href, label, onNavigate }) {
   );
 }
 
+function Chevron({ open }) {
+  return (
+    <svg
+      className={`h-4 w-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  );
+}
+
+/** Desktop mega menu listing every service, grouped by category. */
+function ServicesMenu({ onNavigate }) {
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef(null);
+  const closeTimer = useRef(null);
+
+  const show = () => {
+    clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+  const hide = () => {
+    clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpen(false), 140);
+  };
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    const onClick = (e) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target)) setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onClick);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onClick);
+    };
+  }, [open]);
+
+  useEffect(() => () => clearTimeout(closeTimer.current), []);
+
+  const navigate = () => {
+    setOpen(false);
+    onNavigate?.();
+  };
+
+  return (
+    <div ref={wrapRef} onMouseEnter={show} onMouseLeave={hide}>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-haspopup="true"
+        aria-controls="services-menu"
+        className={`group relative inline-flex items-center gap-1 px-2.5 py-2 text-sm font-medium transition-colors sm:px-3 sm:text-[15px] ${
+          open ? "text-[#0B1F4E]" : "text-[#0B1F4E]/80 hover:text-[#0B1F4E]"
+        }`}
+      >
+        Services
+        <Chevron open={open} />
+        <span
+          className={`pointer-events-none absolute inset-x-0 bottom-1 h-px origin-left bg-red-600 transition-transform duration-300 ease-out ${
+            open ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+          }`}
+          aria-hidden
+        />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="services-menu"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-x-0 top-full z-50 mx-auto w-[min(calc(100vw-2rem),62rem)] pt-3"
+          >
+            <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_30px_80px_-20px_rgba(11,29,58,0.35)]">
+              <div className="grid gap-4 p-5 md:grid-cols-3 lg:gap-6 lg:p-7">
+                {SERVICE_GROUPS.map((group) => (
+                  <div key={group.id}>
+                    <p className="mb-3 px-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#E10E1D]">
+                      {group.label}
+                    </p>
+                    <ul className="space-y-1">
+                      {group.items.map((s) => (
+                        <li key={s.slug}>
+                          <Link
+                            href={`/services/${s.slug}`}
+                            onClick={navigate}
+                            className="group/item flex gap-3 rounded-2xl p-3 transition hover:bg-[#F7F8FB]"
+                          >
+                            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0B1D3A]/6 text-[#0B1D3A] transition group-hover/item:bg-[#E10E1D] group-hover/item:text-white">
+                              <ServiceIcon name={s.icon} className="h-5 w-5" />
+                            </span>
+                            <span className="min-w-0">
+                              <span className="block text-sm font-bold text-[#0B1D3A]">{s.cardTitle}</span>
+                              <span className="mt-0.5 line-clamp-2 block text-xs leading-relaxed text-slate-500">
+                                {s.tagline}
+                              </span>
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-col gap-3 border-t border-slate-100 bg-[#F7F8FB] px-6 py-4 sm:flex-row sm:items-center sm:justify-between lg:px-7">
+                <p className="text-sm text-slate-600">
+                  Not sure which service fits?{" "}
+                  <span className="font-semibold text-[#0B1D3A]">We’ll advise you for free.</span>
+                </p>
+                <div className="flex items-center gap-4">
+                  <Link
+                    href="/services"
+                    onClick={navigate}
+                    className="text-sm font-bold text-[#0B1D3A] transition hover:text-[#E10E1D]"
+                  >
+                    View all services →
+                  </Link>
+                  <Link
+                    href="/#contact"
+                    onClick={navigate}
+                    className="rounded-full bg-[#E10E1D] px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-white transition hover:brightness-110"
+                  >
+                    Free consultation
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+/** Mobile drawer accordion with every service. */
+function MobileServices({ onNavigate }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls="mobile-services"
+        className="flex w-full items-center justify-between rounded-xl px-3 py-3 text-base font-medium text-[#0B1F4E] transition hover:bg-slate-50"
+      >
+        Services
+        <Chevron open={open} />
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            id="mobile-services"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="overflow-hidden"
+          >
+            <div className="space-y-4 pb-3 pl-3 pt-1">
+              {SERVICE_GROUPS.map((group) => (
+                <div key={group.id}>
+                  <p className="px-3 pb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#E10E1D]">
+                    {group.label}
+                  </p>
+                  {group.items.map((s) => (
+                    <Link
+                      key={s.slug}
+                      href={`/services/${s.slug}`}
+                      onClick={onNavigate}
+                      className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-[#0B1F4E] transition hover:bg-slate-50"
+                    >
+                      <ServiceIcon name={s.icon} className="h-4 w-4 shrink-0 text-[#0B1F4E]/60" />
+                      {s.cardTitle}
+                    </Link>
+                  ))}
+                </div>
+              ))}
+              <Link href="/services" onClick={onNavigate} className="block px-3 text-sm font-bold text-[#E10E1D]">
+                View all services →
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 function BrandLogo({ onNavigate, compact = false }) {
   return (
     <Link
-      href="#home"
+      href="/"
       onClick={onNavigate}
       className="group relative flex shrink-0 items-center gap-2.5 sm:gap-3"
       aria-label="Digital Drifters — home"
     >
       <span
-        className={`relative flex shrink-0 items-center justify-center overflow-hidden  ring-[#0B1F4E]/12 transition duration-300 group-hover:ring-[#C67D4D]/45 group-hover:shadow-[0_0_22px_-4px_rgba(198,125,77,0.5)] group-focus-visible:ring-2 group-focus-visible:ring-[#0B1F4E]/40 ${compact ? "h-10 w-10" : "h-11 w-11 sm:h-12 sm:w-12"
+        className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_4px_14px_-4px_rgba(11,29,58,0.45)] transition duration-300 group-hover:shadow-[0_0_22px_-4px_rgba(198,125,77,0.6)] group-focus-visible:ring-2 group-focus-visible:ring-[#0B1F4E]/40 ${compact ? "h-10 w-10" : "h-10 w-10 sm:h-11 sm:w-11"
           }`}
       >
         <Image
-          src="/22.png"
+          src="/logo-mark.png"
           alt=""
-          width={60}
-          height={60}
-          className="h-[80%] w-[80%] max-w-none object-cover object-center transition duration-500 ease-out group-hover:scale-[1.06]"
+          width={88}
+          height={88}
+          className="h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.06]"
           priority
-        />
-        <span
-          className="pointer-events-none absolute inset-0 rounded-full bg-linear-to-br from-[#7FE5E5]/10 via-transparent to-[#C67D4D]/15 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          aria-hidden
         />
       </span>
 
@@ -159,7 +362,7 @@ export function Navbar() {
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       >
         <div
-          className={`pointer-events-auto mx-auto flex w-full max-w-[min(100%,1600px)] items-center gap-4 rounded-full border px-5 py-3.5 backdrop-blur-2xl sm:gap-5 sm:px-7 sm:py-4 lg:px-10 ${shellClass}`}
+          className={`pointer-events-auto relative mx-auto flex w-full max-w-[min(100%,1600px)] items-center gap-4 rounded-full border px-4 py-2.5 backdrop-blur-2xl sm:gap-5 sm:px-6 sm:py-3 lg:px-8 ${shellClass}`}
         >
           <BrandLogo onNavigate={closeMenu} />
 
@@ -167,6 +370,7 @@ export function Navbar() {
             className="hidden flex-1 items-center justify-center gap-1 md:flex lg:gap-2"
             aria-label="Primary"
           >
+            <ServicesMenu onNavigate={closeMenu} />
             {navItems.map((item) => (
               <NavUnderlineLink
                 key={item.href}
@@ -179,7 +383,7 @@ export function Navbar() {
 
           <div className="ml-auto flex items-center gap-2 sm:gap-3 md:ml-0">
             <Link
-              href="#contact"
+              href="/#contact"
               onClick={closeMenu}
               className={`hidden px-5 py-2.5 text-[15px] sm:inline-flex md:px-7 md:py-3 ${ctaGradient}`}
             >
@@ -216,7 +420,7 @@ export function Navbar() {
               id="mobile-menu"
               role="dialog"
               aria-modal="true"
-              className="fixed inset-y-0 right-0 z-70 flex w-[min(100%,20rem)] flex-col border-l border-slate-200 bg-white p-6 pt-6 shadow-2xl shadow-slate-900/20 backdrop-blur-2xl md:hidden"
+              className="fixed inset-y-0 right-0 z-70 flex w-[min(100%,20rem)] flex-col overflow-y-auto border-l border-slate-200 bg-white p-6 pt-6 shadow-2xl shadow-slate-900/20 backdrop-blur-2xl md:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -234,6 +438,7 @@ export function Navbar() {
                 </button>
               </div>
               <nav className="flex flex-col gap-1" aria-label="Mobile">
+                <MobileServices onNavigate={closeMenu} />
                 {navItems.map((item, i) => (
                   <motion.div
                     key={item.href}
@@ -262,7 +467,7 @@ export function Navbar() {
                 transition={{ delay: 0.2, duration: 0.35 }}
               >
                 <Link
-                  href="#contact"
+                  href="/#contact"
                   onClick={closeMenu}
                   className={`flex w-full items-center justify-center py-3 ${ctaGradient}`}
                 >

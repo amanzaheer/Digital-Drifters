@@ -259,7 +259,7 @@ export function ProjectsSection() {
   return (
     <section
       id="work"
-      className="relative scroll-mt-24 bg-white py-20 text-black sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 bg-white py-14 text-black sm:py-16 lg:py-20"
       aria-labelledby="projects-heading"
     >
       <div
@@ -279,13 +279,12 @@ export function ProjectsSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-red-600 sm:text-sm sm:tracking-[0.26em]">
-            <IconBriefcase className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
+          <p className="section-eyebrow">
             Our software projects
           </p>
           <h2
             id="projects-heading"
-            className={`mt-4 text-3xl font-bold leading-[1.1] tracking-tight ${NAVY} sm:text-4xl lg:text-[2.75rem]`}
+            className={`mt-5 text-3xl font-black leading-[1.1] tracking-tight ${NAVY} sm:text-4xl lg:text-[2.75rem]`}
           >
             Platforms we&apos;ve built &amp; shipped
           </h2>
@@ -303,7 +302,7 @@ export function ProjectsSection() {
           </Link>
         </motion.header>
 
-        <div className="mt-14 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:mx-auto lg:max-w-[1436px] lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:mx-auto lg:max-w-[1436px] lg:grid-cols-3">
           {PROJECTS.map((project, index) => (
             <ProjectCard
               key={project.href}

@@ -371,7 +371,7 @@ export function MarketplaceSection() {
   return (
     <section
       id="marketplace"
-      className="relative scroll-mt-24 overflow-hidden bg-[#F8F9FB] py-20 text-slate-900 sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 overflow-hidden bg-[#F8F9FB] py-14 text-slate-900 sm:py-16 lg:py-20"
       aria-labelledby="marketplace-heading"
     >
       <div
@@ -383,7 +383,7 @@ export function MarketplaceSection() {
         aria-hidden
       />
 
-      <div className="relative mx-auto mb-12 w-full max-w-[min(100%,1600px)] px-5 sm:mb-14 sm:px-8 lg:px-10 xl:px-14">
+      <div className="relative mx-auto mb-8 w-full max-w-[min(100%,1600px)] px-5 sm:mb-10 sm:px-8 lg:px-10 xl:px-14">
         <motion.header
           className="mx-auto max-w-3xl text-center"
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
@@ -391,13 +391,12 @@ export function MarketplaceSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
         >
-          <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-red-600 sm:text-sm sm:tracking-[0.26em]">
-            <IconStore className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
-            Seller dashboards
+          <p className="section-eyebrow">
+            eCommerce · Seller dashboards
           </p>
           <h2
             id="marketplace-heading"
-            className={`mt-4 text-3xl font-bold tracking-tight ${NAVY} sm:text-4xl lg:text-[2.65rem]`}
+            className={`mt-5 text-3xl font-black tracking-tight ${NAVY} sm:text-4xl lg:text-[2.65rem]`}
           >
             eBay &amp; Amazon store performance
           </h2>

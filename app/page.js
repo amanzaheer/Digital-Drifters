@@ -1,17 +1,17 @@
-"use client";
-
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { ServicesSection } from "@/components/ServicesSection";
+import { SearchVisibilitySection } from "@/components/SearchVisibilitySection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { MarketplaceSection } from "@/components/MarketplaceSection";
 import { AiIntegrationSection } from "@/components/AiIntegrationSection";
 import { SocialMediaSection } from "@/components/SocialMediaSection";
 import { AboutSection } from "@/components/AboutSection";
-import { TeamSection } from "@/components/TeamSection";
 import { ReviewsSection } from "@/components/ReviewsSection";
+import { FaqSection } from "@/components/FaqSection";
 import { CtaSection } from "@/components/CtaSection";
 import { Footer } from "@/components/Footer";
+import { HOME_FAQS } from "@/lib/services";
 
 export default function Home() {
   return (
@@ -19,13 +19,14 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ServicesSection />
+      <SearchVisibilitySection />
       <ProjectsSection />
       <MarketplaceSection />
       <AiIntegrationSection />
       <SocialMediaSection />
       <AboutSection />
-      {/* <TeamSection /> */}
       <ReviewsSection />
+      <FaqSection faqs={HOME_FAQS} />
       <CtaSection />
       <Footer />
     </main>
