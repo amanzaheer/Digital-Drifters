@@ -12,6 +12,20 @@ import { FaqSection } from "@/components/FaqSection";
 import { CtaSection } from "@/components/CtaSection";
 import { Footer } from "@/components/Footer";
 import { HOME_FAQS } from "@/lib/services";
+import { SITE } from "@/lib/site";
+
+export const metadata = {
+  alternates: { canonical: "/" },
+  // Page-level openGraph replaces the layout object, so it is declared in full.
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: SITE.name,
+    title: `${SITE.name} | ${SITE.tagline}`,
+    description: SITE.metaDescription,
+    locale: "en_GB",
+  },
+};
 
 export default function Home() {
   return (

@@ -194,7 +194,7 @@ export function AboutSection() {
                 <div className="relative min-h-0 overflow-hidden rounded-3xl shadow-xl shadow-[#0B1F4E]/20 ring-1 ring-black/5 [grid-column:1] [grid-row:1/span_2]">
                   <Image
                     src={COLLAGE.main}
-                    alt="Team collaborating at Digital Drifters"
+                    alt="Team collaborating around a table"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 90vw, 40vw"
@@ -232,7 +232,7 @@ export function AboutSection() {
                 <div className="relative min-h-[7.5rem] min-w-0 overflow-hidden rounded-3xl shadow-lg shadow-[#0B1F4E]/20 ring-1 ring-black/5 [grid-column:2] [grid-row:3] sm:min-h-[9rem]">
                   <Image
                     src={COLLAGE.bottomRight}
-                    alt="Team in the office"
+                    alt="Colleagues discussing work in an office"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 32vw, 18vw"
@@ -331,7 +331,7 @@ export function AboutSection() {
                 <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-red-500">
                   <Image
                     src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=128&h=128&q=80"
-                    alt="Digital Drifters leadership"
+                    alt=""
                     fill
                     className="object-cover"
                     sizes="56px"

@@ -6,6 +6,7 @@ import { ServiceIcon } from "@/components/ServiceIcon";
 import { FaqList } from "@/components/FaqSection";
 import { JsonLd, faqJsonLd } from "@/components/JsonLd";
 import { PROCESS, SERVICES, getService } from "@/lib/services";
+import { PROJECTS } from "@/lib/projects";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -19,8 +20,7 @@ export async function generateMetadata({ params }) {
   const service = getService(slug);
   if (!service) return {};
 
-  const title = `${service.title} in London, UK & Worldwide`;
-  const description = `${service.tagline} ${service.summary}`;
+  const { title, description } = service.seo;
   const path = `/services/${service.slug}`;
 
   return {
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
     description,
     keywords: service.keywords,
     alternates: { canonical: path },
-    openGraph: { type: "website", url: path, title: `${title} | ${SITE.name}`, description },
+    openGraph: { type: "website", url: path, title: `${title} | ${SITE.name}`, description, siteName: SITE.name, locale: "en_GB" },
     twitter: { card: "summary_large_image", title: `${title} | ${SITE.name}`, description },
   };
 }
@@ -44,6 +44,7 @@ export default async function ServicePage({ params }) {
     ...SERVICES.filter((s) => s.category === service.category && s.slug !== service.slug),
     ...SERVICES.filter((s) => s.category !== service.category),
   ].slice(0, 3);
+  const work = PROJECTS.filter((p) => p.services?.includes(service.slug));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -56,7 +57,7 @@ export default async function ServicePage({ params }) {
         description: service.intro,
         url,
         provider: { "@id": `${SITE.url}/#organization` },
-        areaServed: SITE.areaServed.map((name) => ({ "@type": "Place", name })),
+        areaServed: SITE.areaServed.map((name) => ({ "@type": "Country", name })),
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: `${service.title} — what's included`,
@@ -67,7 +68,19 @@ export default async function ServicePage({ params }) {
         },
       },
       {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name: `${service.seo.title} | ${SITE.name}`,
+        description: service.seo.description,
+        inLanguage: "en-GB",
+        isPartOf: { "@id": `${SITE.url}/#website` },
+        about: { "@id": `${url}#service` },
+        breadcrumb: { "@id": `${url}#breadcrumb` },
+      },
+      {
         "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
           { "@type": "ListItem", position: 2, name: "Services", item: absoluteUrl("/services") },
@@ -112,10 +125,10 @@ export default async function ServicePage({ params }) {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/#contact"
+                href="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-[#E10E1D] px-7 py-3.5 text-xs font-bold uppercase tracking-[0.18em] shadow-[0_10px_28px_-8px_rgba(225,14,29,0.7)] transition hover:brightness-110"
               >
-                Get a free consultation <ServiceIcon name="arrow" className="h-4 w-4" strokeWidth={2.2} />
+                Book a consultation <ServiceIcon name="arrow" className="h-4 w-4" strokeWidth={2.2} />
               </Link>
               <a
                 href={`tel:${SITE.phone}`}
@@ -135,11 +148,11 @@ export default async function ServicePage({ params }) {
               </div>
               <div>
                 <dt className="text-white/50">Areas served</dt>
-                <dd className="mt-1 font-semibold">London, UK, US, Europe &amp; worldwide</dd>
+                <dd className="mt-1 font-semibold">London &amp; across the UK; US clients served remotely</dd>
               </div>
               <div>
                 <dt className="text-white/50">Getting started</dt>
-                <dd className="mt-1 font-semibold">Free discovery call &amp; tailored proposal</dd>
+                <dd className="mt-1 font-semibold">Discovery call &amp; tailored proposal</dd>
               </div>
             </dl>
           </aside>
@@ -175,7 +188,7 @@ export default async function ServicePage({ params }) {
                   ))}
                 </ul>
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#E10E1D]"
                 >
                   Check if we’re a fit <ServiceIcon name="arrow" className="h-4 w-4" strokeWidth={2.2} />
@@ -259,6 +272,45 @@ export default async function ServicePage({ params }) {
         </div>
       </section>
 
+      {/* Real portfolio evidence */}
+      {work.length > 0 && (
+        <section className="bg-[#0B1D3A] py-14 text-white sm:py-16" aria-labelledby="work-heading">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+            <p className="section-eyebrow section-eyebrow-dark">Our work</p>
+            <h2 id="work-heading" className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">
+              Products we&apos;ve built
+            </h2>
+            <ul className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {work.map((p) => (
+                <li key={p.href}>
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener"
+                    className="group flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-[#E10E1D]/60 hover:bg-white/10"
+                  >
+                    <span className="text-lg font-bold">{p.name}</span>
+                    <span className="mt-2 flex flex-wrap gap-1.5">
+                      {p.tags.map((t) => (
+                        <span key={t} className="rounded-full bg-white/10 px-2.5 py-0.5 text-[11px] font-semibold text-white/80">
+                          {t}
+                        </span>
+                      ))}
+                    </span>
+                    <span className="mt-3 text-sm leading-relaxed text-white/70">{p.description}</span>
+                    <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-bold text-[#ff8a7a]">
+                      Visit {p.name}
+                      <ServiceIcon name="arrow" className="h-4 w-4 transition group-hover:translate-x-1" strokeWidth={2.2} />
+                      <span className="sr-only">(opens in a new tab)</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {/* Related */}
       <section className="py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
@@ -284,10 +336,10 @@ export default async function ServicePage({ params }) {
           <div className="mt-12 flex flex-col items-start justify-between gap-6 rounded-3xl bg-linear-to-r from-[#E10E1D] to-[#b30a17] p-8 text-white sm:flex-row sm:items-center sm:p-10">
             <div>
               <h2 className="text-2xl font-black sm:text-3xl">Ready to grow with {SITE.name}?</h2>
-              <p className="mt-2 text-white/85">Tell us about your project—we reply within one business day.</p>
+              <p className="mt-2 text-white/85">Tell us about your project and we’ll arrange a discovery call.</p>
             </div>
             <Link
-              href="/#contact"
+              href="/contact"
               className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-7 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-[#0B1D3A] transition hover:bg-white/90"
             >
               Contact us <ServiceIcon name="arrow" className="h-4 w-4" strokeWidth={2.2} />

@@ -21,6 +21,5 @@ export default function robots() {
       { userAgent: AI_CRAWLERS, allow: "/" },
     ],
     sitemap: `${SITE.url}/sitemap.xml`,
-    host: SITE.url,
   };
 }

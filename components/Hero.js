@@ -164,7 +164,6 @@ function HeroRotatingServices() {
 }
 
 export function Hero() {
-  const [bannerReady, setBannerReady] = useState(false);
   const reduceMotion = useReducedMotion();
 
   return (
@@ -197,7 +196,8 @@ export function Hero() {
             animate="visible"
             className="flex max-w-xl flex-col items-start text-left"
           >
-            <motion.h1 variants={lineVariants} className="text-[#083157]">
+            {/* Rendered visible on the server: the H1 is the LCP candidate. */}
+            <h1 className="text-[#083157]">
               <span className="inline-flex items-center gap-2 rounded-full border border-[#E10E1D]/20 bg-white px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[#E10E1D] shadow-sm sm:text-[11px]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#E10E1D]" aria-hidden />
                 London software, SEO &amp; eCommerce agency
@@ -208,7 +208,7 @@ export function Hero() {
               >
                 Digital Drifters
               </span>
-            </motion.h1>
+            </h1>
 
             <motion.div variants={lineVariants} className="w-full">
               <HeroRotatingServices />
@@ -218,9 +218,9 @@ export function Hero() {
               variants={lineVariants}
               className="mt-6 max-w-md text-base font-medium leading-relaxed text-[#4b5563]"
             >
-              End-to-end partners for custom software, SEO &amp; AI search visibility,
-              marketplace growth, operations and customer support—serving businesses across
-              the UK, US and worldwide.
+              A London software company building custom software, websites and mobile apps—plus
+              SEO, eCommerce, operations and customer support for businesses across the UK and
+              the US.
             </motion.p>
 
             <motion.div variants={lineVariants} className="mt-8 flex flex-wrap items-center gap-3">
@@ -237,7 +237,7 @@ export function Hero() {
                 href="#contact"
                 className="inline-flex items-center rounded-full border border-[#083157]/20 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.22em] text-[#083157] transition hover:border-[#083157]/40 hover:bg-[#083157]/5"
               >
-                Free consultation
+                Book a consultation
               </Link>
             </motion.div>
           </motion.div>
@@ -248,20 +248,15 @@ export function Hero() {
           <div className="relative flex w-full flex-1 items-center justify-center px-4 pb-12 pt-2 sm:px-8 sm:pb-14 lg:px-10 lg:pb-16 lg:pt-24">
             <div className="relative w-full max-w-[min(100%,760px)]">
               <div className="rounded-[2rem] bg-[#f4f5f7] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] sm:p-10 lg:p-12">
-                <div
-                  className={`relative overflow-hidden rounded-3xl transition-opacity duration-700 ${
-                    bannerReady ? "opacity-100" : "opacity-0"
-                  }`}
-                >
+                <div className="relative overflow-hidden rounded-3xl">
                   <Image
                     src={HERO_BANNER_SRC}
-                    alt="Digital Drifters — web, mobile, and platform work across devices"
-                    width={2112}
-                    height={1152}
+                    alt="Example website, web app and mobile app designs shown on laptop, tablet and phone screens"
+                    width={1538}
+                    height={1022}
                     priority
                     className="h-auto w-full object-contain object-center drop-shadow-[0_24px_48px_rgba(8,49,87,0.16)]"
                     sizes="(max-width: 1024px) 100vw, 58vw"
-                    onLoad={() => setBannerReady(true)}
                   />
                 </div>
               </div>

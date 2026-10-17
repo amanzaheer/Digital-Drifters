@@ -192,7 +192,7 @@ export function SearchVisibilitySection() {
             href="/services/seo"
             className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-xs font-bold uppercase tracking-[0.18em] text-[#0B1D3A] transition hover:bg-white/90"
           >
-            Get a free SEO audit <ServiceIcon name="arrow" className="h-4 w-4" strokeWidth={2.2} />
+            Request an SEO audit <ServiceIcon name="arrow" className="h-4 w-4" strokeWidth={2.2} />
           </Link>
         </div>
       </div>

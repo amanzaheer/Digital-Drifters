@@ -1,56 +1,65 @@
 import Link from "next/link";
 import { SERVICES } from "@/lib/services";
+import { SITE } from "@/lib/site";
 
-const PHONE_DISPLAY = "+44  7466908663 ";
-const PHONE_TEL = "+447466908663";
-const EMAIL = "digitaldrifters12@gmail.com";
+const PHONE_DISPLAY = SITE.phoneDisplay;
+const PHONE_TEL = SITE.phone;
+const EMAIL = SITE.email;
 
-const LOCATIONS = [
-  ["London (HQ)", "Manchester", "Birmingham", "Leeds", "Bristol"],
-  ["Edinburgh", "Cardiff", "Glasgow", "Liverpool", "Dublin"],
-  ["Dallas (TX)", " Los Angeles (CA)", "New York", "Chicago (IL)", "Houston (TX)"],
+/** Honest service-area statement — matches the single address on Google Business Profile. */
+const SERVICE_AREAS = [
+  { title: "East London (E12)", text: "Head office on High Street North" },
+  { title: "London & across the UK", text: "Businesses in London and UK-wide" },
+  { title: "United States", text: "Projects delivered remotely" },
 ];
 
-const LEGAL_LINKS = [
-  { label: "Terms", href: "#" },
-  { label: "Privacy", href: "#" },
-  { label: "Accessibility Statement", href: "#" },
-  { label: "Sitemap", href: "#" },
-  { label: "Privacy Settings", href: "#" },
+const QUICK_LINKS = [
+  { label: "All services", href: "/services" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contact", href: "/contact" },
+  { label: "Sitemap", href: "/sitemap.xml" },
 ];
 
-const SOCIAL_LINKS = [
+const SOCIAL_PLATFORMS = [
   {
     label: "Facebook",
-    href: "https://facebook.com",
+    domain: "facebook.com",
     Icon: IconFacebook,
   },
   {
     label: "X",
-    href: "https://x.com",
+    domain: "x.com",
     Icon: IconX,
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com",
+    domain: "linkedin.com",
     Icon: IconLinkedIn,
   },
   {
     label: "YouTube",
-    href: "https://youtube.com",
+    domain: "youtube.com",
     Icon: IconYouTube,
   },
   {
     label: "Instagram",
-    href: "https://instagram.com",
+    domain: "instagram.com",
     Icon: IconInstagram,
   },
-  {
-    label: "RSS feed",
-    href: "#",
-    Icon: IconRss,
-  },
 ];
+
+const SOCIAL_LINKS = SOCIAL_PLATFORMS.flatMap(({ domain, ...rest }) => {
+  const href = SITE.sameAs.find((u) => u.includes(domain));
+  return href ? [{ ...rest, href }] : [];
+});
+
+function IconWhatsApp({ className }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+      <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.32l-.34-.2-3.56.93.95-3.47-.22-.36a9.42 9.42 0 01-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43a9.4 9.4 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.24 9.43-9.45 9.43zm8.03-17.46A11.3 11.3 0 0012.05.7C5.8.7.7 5.79.7 12.05c0 2 .52 3.95 1.52 5.67L.6 23.3l5.72-1.5a11.3 11.3 0 005.42 1.38h.01c6.26 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.02z" />
+    </svg>
+  );
+}
 
 function IconFacebook({ className }) {
   return (
@@ -88,14 +97,6 @@ function IconInstagram({ className }) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden>
       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-    </svg>
-  );
-}
-
-function IconRss({ className }) {
-  return (
-    <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden>
-      <path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.998 4.966 11.058 11.011h4.817c-.062-8.71-7.118-15.758-15.875-15.822zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z" />
     </svg>
   );
 }
@@ -209,26 +210,30 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-5">
-            <h2 className="mb-5 text-lg font-bold tracking-tight sm:text-xl">Locations</h2>
-            <div className="grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-3">
-              {LOCATIONS.map((column, columnIndex) => (
-                <ul key={columnIndex} className="space-y-2">
-                  {column.map((city) => (
-                    <li
-                      key={city}
-                      className="text-sm text-white/85 transition hover:text-white sm:text-[15px]"
-                    >
-                      {city}
-                    </li>
-                  ))}
-                </ul>
+            <h2 className="mb-5 text-lg font-bold tracking-tight sm:text-xl">Areas We Serve</h2>
+            <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {SERVICE_AREAS.map((area) => (
+                <li key={area.title}>
+                  <p className="text-sm font-semibold text-white sm:text-[15px]">{area.title}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-white/70">{area.text}</p>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
           <div className="lg:col-span-3">
-            <h2 className="mb-5 text-lg font-bold tracking-tight sm:text-xl">Follow Us</h2>
+            <h2 className="mb-5 text-lg font-bold tracking-tight sm:text-xl">
+              {SOCIAL_LINKS.length ? "Follow Us" : "Get in Touch"}
+            </h2>
             <div className="flex flex-wrap items-center gap-3 sm:gap-3.5">
+              <a
+                href={SITE.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+              >
+                <IconWhatsApp className="h-4 w-4" /> WhatsApp
+              </a>
               {SOCIAL_LINKS.map(({ label, href, Icon }) => (
                 <a
                   key={label}
@@ -274,9 +279,9 @@ export function Footer() {
           <p className="text-xs text-white/70 sm:text-sm">
             © {year} Digital Drifters. All rights reserved.
           </p>
-          <nav aria-label="Legal links">
+          <nav aria-label="Footer links">
             <ul className="flex flex-wrap items-center gap-x-1 gap-y-2 text-xs text-white/75 sm:text-sm">
-              {LEGAL_LINKS.map(({ label, href }, index) => (
+              {QUICK_LINKS.map(({ label, href }, index) => (
                 <li key={label} className="flex items-center">
                   {index > 0 && (
                     <span className="mx-2 text-white/30" aria-hidden>

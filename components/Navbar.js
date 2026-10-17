@@ -19,7 +19,7 @@ const navItems = [
   { href: "/#ai", label: "AI" },
   { href: "/#about", label: "About" },
   { href: "/#faq", label: "FAQ" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ];
 
 /** Solid red CTA to match brand button style */
@@ -161,7 +161,7 @@ function ServicesMenu({ onNavigate }) {
               <div className="flex flex-col gap-3 border-t border-slate-100 bg-[#F7F8FB] px-6 py-4 sm:flex-row sm:items-center sm:justify-between lg:px-7">
                 <p className="text-sm text-slate-600">
                   Not sure which service fits?{" "}
-                  <span className="font-semibold text-[#0B1D3A]">We’ll advise you for free.</span>
+                  <span className="font-semibold text-[#0B1D3A]">Talk to our team.</span>
                 </p>
                 <div className="flex items-center gap-4">
                   <Link
@@ -176,7 +176,7 @@ function ServicesMenu({ onNavigate }) {
                     onClick={navigate}
                     className="rounded-full bg-[#E10E1D] px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-white transition hover:brightness-110"
                   >
-                    Free consultation
+                    Book a consultation
                   </Link>
                 </div>
               </div>

@@ -53,7 +53,7 @@ export default async function Image() {
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24, opacity: 0.75 }}>
           <div>digitaldrifters.co</div>
-          <div style={{ color: "#ff6b5a" }}>London · UK · US · Worldwide</div>
+          <div style={{ color: "#ff6b5a" }}>London · UK · US</div>
         </div>
       </div>
     ),

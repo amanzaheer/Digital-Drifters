@@ -7,10 +7,10 @@ import { CATEGORIES, SERVICES } from "@/lib/services";
 import { ServiceIcon } from "@/components/ServiceIcon";
 
 const HIGHLIGHTS = [
-  { value: "10", label: "Core services" },
-  { value: "24/7", label: "Support coverage" },
-  { value: "UK · US", label: "& worldwide clients" },
-  { value: "1", label: "Trusted partner" },
+  { value: String(SERVICES.length), label: "Services under one roof" },
+  { value: "E12", label: "East London head office" },
+  { value: "UK · US", label: "Markets we serve" },
+  { value: "1", label: "Point of contact" },
 ];
 
 const LG_SPAN = { 1: "lg:col-span-1", 2: "lg:col-span-2", 3: "lg:col-span-3" };
@@ -106,7 +106,7 @@ function ConsultCard({ count }) {
           Not sure where to start?
         </p>
         <h3 className="mt-2 text-xl font-black tracking-tight text-[#0B1D3A] sm:text-2xl">
-          Get a free growth consultation
+          Talk to us about your goals
         </h3>
         <p className="mt-2 max-w-md text-[15px] leading-relaxed text-slate-600">
           Tell us your goals—we’ll recommend the right mix of services and a clear plan.
@@ -116,7 +116,7 @@ function ConsultCard({ count }) {
         href="/#contact"
         className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full bg-[#E10E1D] px-6 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-[0_10px_28px_-8px_rgba(225,14,29,0.6)] transition hover:brightness-110 lg:self-auto"
       >
-        Book a free call
+        Book a consultation
         <ServiceIcon name="arrow" className="h-4 w-4" strokeWidth={2.2} />
       </Link>
     </motion.div>
@@ -163,9 +163,9 @@ export function ServicesSection() {
             <span className="text-gradient-brand">needs to grow</span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-            Software, SEO, AEO &amp; GEO, Google Business Profile, marketplaces, operations
-            and customer support—one team and one partner for every capability your
-            business needs to scale.
+            Software, websites and apps, IT consulting, SEO, Google Business Profile,
+            eCommerce, operations and customer support—one team and one partner for the
+            capabilities your business needs to grow.
           </p>
         </motion.header>
 

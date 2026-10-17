@@ -4,13 +4,25 @@ import { Footer } from "@/components/Footer";
 import { ServiceIcon } from "@/components/ServiceIcon";
 import { JsonLd } from "@/components/JsonLd";
 import { CATEGORIES, SERVICES } from "@/lib/services";
-import { SITE, absoluteUrl } from "@/lib/site";
+import { DEFAULT_OG_IMAGE, SITE, absoluteUrl } from "@/lib/site";
+
+const TITLE = "Services – Software, Web, IT & eCommerce";
+const DESCRIPTION =
+  "All Digital Drifters services: software, websites and mobile apps, IT consulting, SEO, Google Business Profile, eCommerce, operations and support.";
 
 export const metadata = {
-  title: "Our Services — Software, SEO, AEO, GEO, eCommerce & More",
-  description:
-    "Explore Digital Drifters services: custom software development, SEO, AEO, GEO, Google Business Profile management, social media, AI integration, Amazon & eBay management, operation management and call center services.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: "/services" },
+  openGraph: {
+    type: "website",
+    url: "/services",
+    siteName: SITE.name,
+    title: `${TITLE} | ${SITE.name}`,
+    description: DESCRIPTION,
+    locale: "en_GB",
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 export default function ServicesIndex() {
@@ -39,7 +51,7 @@ export default function ServicesIndex() {
             <span className="text-gradient-brand">grow and get found</span>
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/70">
-            {SITE.name} is a London-based agency serving clients across the UK, US and worldwide.
+            {SITE.name} is a software company in East London (E12), working with businesses across the UK and in the US.
           </p>
         </div>
       </section>
