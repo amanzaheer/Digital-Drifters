@@ -11,6 +11,7 @@ export default function manifest() {
     theme_color: "#0B1D3A",
     icons: [
       { src: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+      { src: "/icon.png", sizes: "192x192", type: "image/png", purpose: "any" },
       { src: "/logo-mark.png", sizes: "512x512", type: "image/png", purpose: "any" },
     ],
   };
