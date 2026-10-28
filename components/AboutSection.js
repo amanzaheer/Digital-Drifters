@@ -13,7 +13,7 @@ const COLLAGE = {
 
 const FEATURES = [
   {
-    text: "Operations, software, and marketplaces under one accountable partner.",
+    text: "Operations, marketplaces, and growth channels under one accountable partner.",
     icon: "briefcase",
   },
   {
@@ -287,9 +287,9 @@ export function AboutSection() {
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
               Digital Drifters partners with teams that need operations tightened,
-              software shipped, eBay and Amazon channels grown, and call-center
-              coverage that stays on-brand. We keep scope honest, communication
-              direct, and outcomes measurable—<span className="font-semibold text-slate-800">clear delivery, no fluff.</span>
+              eBay and Amazon channels grown, SEO and social presence managed, and
+              call-center coverage that stays on-brand. We keep scope honest,
+              communication direct, and outcomes measurable—<span className="font-semibold text-slate-800">clear delivery, no fluff.</span>
             </p>
 
             <div className="my-10 h-px w-full max-w-xl bg-linear-to-r from-transparent via-slate-200 to-transparent" />

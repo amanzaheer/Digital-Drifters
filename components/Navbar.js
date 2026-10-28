@@ -14,7 +14,6 @@ const SERVICE_GROUPS = CATEGORIES.filter((c) => c.id !== "all").map((c) => ({
 
 const navItems = [
   { href: "/#seo", label: "SEO" },
-  { href: "/#work", label: "Work" },
   { href: "/#marketplace", label: "eCommerce" },
   { href: "/#ai", label: "AI" },
   { href: "/#about", label: "About" },

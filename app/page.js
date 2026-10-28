@@ -2,7 +2,6 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { ServicesSection } from "@/components/ServicesSection";
 import { SearchVisibilitySection } from "@/components/SearchVisibilitySection";
-import { ProjectsSection } from "@/components/ProjectsSection";
 import { MarketplaceSection } from "@/components/MarketplaceSection";
 import { AiIntegrationSection } from "@/components/AiIntegrationSection";
 import { SocialMediaSection } from "@/components/SocialMediaSection";
@@ -34,7 +33,6 @@ export default function Home() {
       <Hero />
       <ServicesSection />
       <SearchVisibilitySection />
-      <ProjectsSection />
       <MarketplaceSection />
       <AiIntegrationSection />
       <SocialMediaSection />

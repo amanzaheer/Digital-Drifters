@@ -6,7 +6,6 @@ import { ServiceIcon } from "@/components/ServiceIcon";
 import { FaqList } from "@/components/FaqSection";
 import { JsonLd, faqJsonLd } from "@/components/JsonLd";
 import { PROCESS, SERVICES, getService } from "@/lib/services";
-import { PROJECTS } from "@/lib/projects";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -44,7 +43,6 @@ export default async function ServicePage({ params }) {
     ...SERVICES.filter((s) => s.category === service.category && s.slug !== service.slug),
     ...SERVICES.filter((s) => s.category !== service.category),
   ].slice(0, 3);
-  const work = PROJECTS.filter((p) => p.services?.includes(service.slug));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -271,45 +269,6 @@ export default async function ServicePage({ params }) {
           </div>
         </div>
       </section>
-
-      {/* Real portfolio evidence */}
-      {work.length > 0 && (
-        <section className="bg-[#0B1D3A] py-14 text-white sm:py-16" aria-labelledby="work-heading">
-          <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-            <p className="section-eyebrow section-eyebrow-dark">Our work</p>
-            <h2 id="work-heading" className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">
-              Products we&apos;ve built
-            </h2>
-            <ul className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {work.map((p) => (
-                <li key={p.href}>
-                  <a
-                    href={p.href}
-                    target="_blank"
-                    rel="noopener"
-                    className="group flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-[#E10E1D]/60 hover:bg-white/10"
-                  >
-                    <span className="text-lg font-bold">{p.name}</span>
-                    <span className="mt-2 flex flex-wrap gap-1.5">
-                      {p.tags.map((t) => (
-                        <span key={t} className="rounded-full bg-white/10 px-2.5 py-0.5 text-[11px] font-semibold text-white/80">
-                          {t}
-                        </span>
-                      ))}
-                    </span>
-                    <span className="mt-3 text-sm leading-relaxed text-white/70">{p.description}</span>
-                    <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-bold text-[#ff8a7a]">
-                      Visit {p.name}
-                      <ServiceIcon name="arrow" className="h-4 w-4 transition group-hover:translate-x-1" strokeWidth={2.2} />
-                      <span className="sr-only">(opens in a new tab)</span>
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
 
       {/* Related */}
       <section className="py-14 sm:py-16">

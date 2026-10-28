@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 
 const NAVY = "text-black";
@@ -45,19 +44,6 @@ const AI_CAPABILITIES = [
       "Secure, role-based content control",
     ],
     Icon: IconBrain,
-  },
-];
-
-const AI_PRODUCTS = [
-  {
-    name: "AgentDial.ai",
-    href: "https://agentdial.ai",
-    blurb: "AI voice for operations & call workflows",
-  },
-  {
-    name: "EatsDesk.com",
-    href: "https://eatsdesk.com",
-    blurb: "Restaurant POS + AI phone line",
   },
 ];
 
@@ -206,45 +192,6 @@ export function AiIntegrationSection() {
             />
           ))}
         </div>
-
-        <motion.div
-          className="relative mt-12 overflow-hidden rounded-[32px] border border-orange-200/60 bg-white/90 backdrop-blur-xl p-8 shadow-[0_35px_90px_rgba(0,0,0,0.1)] sm:p-10"
-          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h3 className={`text-center text-lg font-bold ${NAVY} sm:text-xl`}>
-            Live in our product stack
-          </h3>
-          <div className="mx-auto mt-10 grid max-w-6xl gap-8 md:grid-cols-2 xl:gap-10">
-            {AI_PRODUCTS.map((product) => (
-              <Link
-                key={product.href}
-                href={product.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col rounded-xl border border-orange-500/25 bg-orange-50/40 px-5 py-4 transition hover:border-orange-500 hover:bg-orange-50"
-              >
-                <span className={`text-lg font-bold ${NAVY} group-hover:text-red-600`}>
-                  {product.name}
-                </span>
-                <span className="mt-1 text-sm text-slate-600">{product.blurb}</span>
-                <span className="mt-3 inline-flex w-fit items-center rounded-full bg-red-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white transition group-hover:bg-orange-600">
-                  View project →
-                </span>
-              </Link>
-            ))}
-          </div>
-          <p className="mt-6 text-center text-sm text-slate-500">
-            We also embed the same AI patterns into custom builds, CRM flows, and
-            social inbox automation—see{" "}
-            <Link href="#work" className="font-semibold text-[#083157] hover:text-[#0B1D3A]">
-              all projects
-            </Link>
-            .
-          </p>
-        </motion.div>
 
         <motion.div
           className="mt-12"

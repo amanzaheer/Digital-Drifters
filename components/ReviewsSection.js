@@ -5,12 +5,12 @@ import { motion, useReducedMotion } from "framer-motion";
 const REVIEWS = [
   {
     id: "r1",
-    category: "Software",
+    category: "eCommerce",
     quote:
-      "Digital Drifters rebuilt our operations stack from spreadsheets into a single dashboard. Releases are predictable and our team finally trusts the numbers.",
+      "Our eBay listings finally look consistent and convert. Inventory sync and weekly performance reports mean we know what is selling without chasing spreadsheets.",
     name: "Jennifer Walsh",
     role: "Operations Director",
-    org: "Summit Logistics · Denver, CO",
+    org: "Summit Retail · Denver, CO",
   },
   {
     id: "r2",
@@ -32,9 +32,9 @@ const REVIEWS = [
   },
   {
     id: "r4",
-    category: "Software",
+    category: "SEO",
     quote:
-      "The CRM rollout was collaborative—not a black box. Sales, support, and management all use LogicalCRM daily without the usual adoption fight.",
+      "Search visibility improved month over month. Local pages rank for the queries that matter, and Google Business Profile reviews stay current without our team chasing them.",
     name: "James Porter",
     role: "Managing Partner",
     org: "Porter & Hale Consulting · Boston, MA",
@@ -50,9 +50,9 @@ const REVIEWS = [
   },
   {
     id: "r6",
-    category: "Software",
+    category: "AI",
     quote:
-      "AgentDial.ai integration cut manual call routing dramatically. The bot handles routine operations; humans step in only when needed.",
+      "Their AI call handling cut manual routing dramatically. Routine questions are answered automatically; humans only step in when it actually matters.",
     name: "David Chen",
     role: "VP Technology",
     org: "Atlas Operations Group · San Jose, CA",
@@ -61,19 +61,19 @@ const REVIEWS = [
     id: "r7",
     category: "Operations",
     quote:
-      "EatsDesk POS plus their AI call line kept our front-of-house calm during peak hours. Orders and reservations no longer collide on one phone.",
+      "Peak-hour phone volume no longer overwhelms the floor. AI intake plus clear handoffs keep orders and reservations from colliding on one line.",
     name: "Elena Vasquez",
     role: "General Manager",
     org: "Vasquez Dining Co. · Miami, FL",
   },
   {
     id: "r8",
-    category: "Software",
+    category: "eCommerce",
     quote:
-      "DomainsPrimeTime let us provision and connect hundreds of microsites in a controlled way. DNS, SSL, and publishing are no longer a bottleneck.",
+      "Amazon store health and Buy Box coverage improved after they rebuilt our listings and pricing rules. Sales reporting is finally something leadership trusts.",
     name: "Tyler Brooks",
-    role: "Platform Architect",
-    org: "Northline Digital · Seattle, WA",
+    role: "Marketplace Lead",
+    org: "Northline Commerce · Seattle, WA",
   },
   {
     id: "r9",
@@ -88,10 +88,10 @@ const REVIEWS = [
     id: "r10",
     category: "Operations",
     quote:
-      "CashlyCards payment flows were audited end-to-end. Card lifecycle reporting is clear for compliance and our ops team sleeps better at month-end.",
+      "Processes, SOPs, and day-to-day ownership are documented end to end. Month-end reporting is clear and our ops team spends less time firefighting.",
     name: "Michael Brooks",
     role: "Chief Operating Officer",
-    org: "Brooks Pay · New York, NY",
+    org: "Brooks Group · New York, NY",
   },
 ];
 
@@ -116,12 +116,7 @@ function StarRating() {
 }
 
 function ReviewCard({ review }) {
-  const categoryClass =
-    review.category === "Software"
-      ? "border-orange-500/50 text-orange-500"
-      : review.category === "Social media"
-        ? "border-orange-500/40 text-orange-500"
-        : "border-orange-500/35 text-orange-500";
+  const categoryClass = "border-orange-500/40 text-orange-500";
 
   return (
     <article className="reviews-card flex shrink-0 flex-col rounded-2xl border border-orange-500/25 bg-white p-5 shadow-[0_4px_28px_-10px_rgba(15,23,42,0.15)] sm:p-6">
@@ -177,11 +172,11 @@ export function ReviewsSection() {
             id="reviews-heading"
             className="mt-5 text-3xl font-black tracking-tight text-[#0B1F4E] sm:text-4xl lg:text-[2.65rem]"
           >
-            Trusted for software, social &amp; operations
+            Trusted for eCommerce, social &amp; operations
           </h2>
           <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
-            Partners describe how we deliver platforms, managed channels, and
-            operational clarity—professional delivery from kickoff to reporting.
+            Partners describe how we deliver marketplace growth, managed channels,
+            and operational clarity—professional delivery from kickoff to reporting.
           </p>
         </motion.header>
       </div>
